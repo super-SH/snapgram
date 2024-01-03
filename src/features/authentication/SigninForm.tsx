@@ -53,7 +53,7 @@ function SigninForm() {
 
   return (
     <Form {...form}>
-      <div className="flex-center flex-col sm:w-420">
+      <div className="flex-center max-w-sm flex-col sm:max-w-md">
         <img src="/assets/images/logo.svg" alt="logo" />
 
         <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
