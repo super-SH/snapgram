@@ -1,12 +1,12 @@
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -14,10 +14,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { SignupValidation } from "@/lib/validation";
-import { Link } from "react-router-dom";
-import { signup } from "@/services/apiUser";
+import { useSignup } from "./useSignup";
+import { useToast } from "@/components/ui/use-toast";
 
 function SignupForm() {
+  const { toast } = useToast();
+  const { signup, isPending: isSigningUp } = useSignup();
   // 1. Define your form.
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
@@ -31,7 +33,22 @@ function SignupForm() {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof SignupValidation>) {
-    const newUser = await signup(values);
+    const newUser = await signup(values, {
+      onSuccess: () => {
+        toast({
+          description: "Account successfully created",
+        });
+      },
+      onError: () => {
+        toast({
+          variant: "destructive",
+          description: "An error has occured when signing up",
+        });
+      },
+      onSettled: () => {
+        form.reset();
+      },
+    });
 
     console.log(newUser);
   }
@@ -68,6 +85,7 @@ function SignupForm() {
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -85,6 +103,7 @@ function SignupForm() {
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -102,6 +121,7 @@ function SignupForm() {
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -114,10 +134,15 @@ function SignupForm() {
                   <FormControl>
                     <Input type="password" className="shad-input" {...field} />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit" className="shad-button_primary">
+            <Button
+              type="submit"
+              className="shad-button_primary"
+              disabled={isSigningUp}
+            >
               Sign Up
             </Button>
 

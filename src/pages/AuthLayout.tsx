@@ -1,13 +1,14 @@
+import { useUser } from "@/features/authentication/useUser";
 import { Navigate, Outlet } from "react-router-dom";
 
 function AuthLayout() {
-  //temp
-  const isAuthenticated = false;
+  const { isAuthenticated } = useUser();
+  console.log(isAuthenticated);
 
   return (
     <>
       {isAuthenticated ? (
-        <Navigate to="/" />
+        <Navigate to="/" replace={true} />
       ) : (
         <>
           <section className="flex flex-1 flex-col items-center justify-center p-10">
