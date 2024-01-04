@@ -12,7 +12,11 @@ function Topbar() {
           <img src="/assets/images/logo.svg" alt="logo of snapgram" />
         </Link>
         <div className="flex items-center justify-between gap-4">
-          <Button className="shad-button_ghost" onClick={() => signout()}>
+          <Button
+            variant="ghost"
+            className="shad-button_ghost"
+            onClick={() => signout()}
+          >
             <img src="/assets/icons/logout.svg" alt="logout icon" />
           </Button>
           <Link to={`/profile/:id`}>

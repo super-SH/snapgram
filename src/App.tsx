@@ -36,6 +36,22 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+      {
+        path: "/explore",
+        element: <p>explore</p>,
+      },
+      {
+        path: "/all-users",
+        element: <p>all-users</p>,
+      },
+      {
+        path: "/saved",
+        element: <p>saved</p>,
+      },
+      {
+        path: "/create-post",
+        element: <p>create-post</p>,
+      },
     ],
   },
 ]);

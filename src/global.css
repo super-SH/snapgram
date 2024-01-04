@@ -212,6 +212,15 @@
     @apply base-medium rounded-lg transition hover:bg-primary-500;
   }
 
+  .leftsidebar-link.active:link,
+  .leftsidebar-link.active:visited {
+    @apply bg-primary-500;
+  }
+
+  .leftsidebar-link.active img {
+    @apply invert-white;
+  }
+
   /* Post Card */
   .post-card {
     @apply w-full max-w-screen-sm rounded-3xl border border-dark-4 bg-dark-2 p-5 lg:p-7;
