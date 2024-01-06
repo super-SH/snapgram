@@ -7,13 +7,18 @@ export async function signup({ username, name, email, password }: INewUser) {
     password,
   });
 
+  // since accountId can be possible undefined ...
+  const accountId = data.user?.id;
+  if (!accountId || errorAuth) {
+    throw new Error(errorAuth?.message || "Error during sign-up");
+  }
+
   // Create a row in Users Table
   const { error } = await supabase
     .from("Accounts")
-    .insert([{ email, name, username, accountId: data.user?.id }])
+    .insert([{ email, name, username, accountId }])
     .select();
 
-  if (errorAuth) throw new Error(errorAuth.message);
   if (error) throw new Error(error.message);
 
   return data;
