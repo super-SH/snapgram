@@ -9,7 +9,7 @@ export async function signup({ username, name, email, password }: INewUser) {
 
   // Create a row in Users Table
   const { error } = await supabase
-    .from("Users")
+    .from("Accounts")
     .insert([{ email, name, username, accountId: data.user?.id }])
     .select();
 
@@ -51,4 +51,23 @@ export async function signout() {
   const { error } = await supabase.auth.signOut();
 
   if (error) throw new Error(error.message);
+}
+
+export async function getCurrentAccount() {
+  const { data, error } = await supabase.auth.getUser();
+
+  if (!data) return null;
+  if (error) throw new Error(error.message);
+
+  const { data: account, error: errorAccount } = await supabase
+    .from("Accounts")
+    .select("*")
+    .eq("accountId", data.user.id)
+    .single();
+
+  if (errorAccount) throw new Error(errorAccount.message);
+
+  console.log(account);
+
+  return account;
 }

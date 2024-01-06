@@ -3,9 +3,11 @@ import { INavLink } from "@/types";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useSignout } from "@/features/authentication/useSignout";
+import { useAccountInfo } from "@/features/accounts/useAccountInfo";
 
 function LeftSidebar() {
   const { signout, isPending: isSigningout } = useSignout();
+  const { data, isFetching } = useAccountInfo();
 
   return (
     <nav className="leftsidebar">
@@ -14,7 +16,7 @@ function LeftSidebar() {
           <img src="/assets/images/logo.svg" alt="logo of snapgram" />
         </Link>
 
-        <Link to={`/profile/:id`} className="flex items-center gap-3">
+        <Link to={`/profile/${data?.id}`} className="flex items-center gap-3">
           <img
             className="h-12 w-12 rounded-full"
             src="/assets/icons/profile-placeholder.svg"
@@ -22,8 +24,8 @@ function LeftSidebar() {
           />
 
           <div className="flex flex-col">
-            <p className="body-bold">name</p>
-            <p className="small-regular text-light-3">@username</p>
+            <p className="body-bold">{data?.name}</p>
+            <p className="small-regular text-light-3">@{data?.username}</p>
           </div>
         </Link>
 
