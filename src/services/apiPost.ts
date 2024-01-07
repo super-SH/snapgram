@@ -40,3 +40,18 @@ export async function createPost(post: INewPost) {
 
   return data;
 }
+
+export async function getRecentPosts() {
+  const { data, error } = await supabase
+    .from("Posts")
+    .select("* , creator(*)")
+    .order("created_at", { ascending: false })
+    .limit(20);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Posts could not be loaded");
+  }
+
+  return data;
+}
