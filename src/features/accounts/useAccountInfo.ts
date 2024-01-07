@@ -1,5 +1,5 @@
 import { getCurrentAccount } from "@/services/apiUser";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 export function useAccountInfo() {
   const { data, isFetching } = useQuery({

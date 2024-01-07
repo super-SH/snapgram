@@ -10,3 +10,11 @@ export type INavLink = {
   route: string;
   label: string;
 };
+
+export type INewPost = {
+  accountId: number;
+  caption: string;
+  file: File[];
+  location?: string;
+  tags?: string;
+};

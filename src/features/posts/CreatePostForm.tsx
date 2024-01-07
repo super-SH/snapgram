@@ -15,8 +15,17 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { FileUploader } from "@/components/shared";
 import { PostValidation } from "@/lib/validation";
+import { useCreatePost } from "./useCreatePost";
+import { useAccountInfo } from "../accounts/useAccountInfo";
+import { useToast } from "@/components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 function CreatePostForm() {
+  const { createPost } = useCreatePost();
+  const { data: account, isFetching } = useAccountInfo();
+  const { toast } = useToast();
+  const navigate = useNavigate();
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof PostValidation>>({
     resolver: zodResolver(PostValidation),
@@ -28,11 +37,30 @@ function CreatePostForm() {
     },
   });
 
+  if (isFetching) return "loading";
+
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof PostValidation>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
+    const accountId = account?.id;
+    if (!accountId) return;
     console.log(values);
+    createPost(
+      { ...values, accountId },
+      {
+        onSuccess: () => {
+          toast({ description: "Post successfully created" });
+          navigate("/");
+        },
+        onError: () => {
+          toast({
+            variant: "destructive",
+            description: "Something went wrong, please try again.",
+          });
+        },
+      },
+    );
   }
 
   return (
