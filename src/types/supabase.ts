@@ -45,6 +45,8 @@ export interface Database {
           created_at: string
           creator: number | null
           id: number
+          imageUrl: string | null
+          location: string | null
           tags: string[]
         }
         Insert: {
@@ -52,6 +54,8 @@ export interface Database {
           created_at?: string
           creator?: number | null
           id?: number
+          imageUrl?: string | null
+          location?: string | null
           tags: string[]
         }
         Update: {
@@ -59,6 +63,8 @@ export interface Database {
           created_at?: string
           creator?: number | null
           id?: number
+          imageUrl?: string | null
+          location?: string | null
           tags?: string[]
         }
         Relationships: [
