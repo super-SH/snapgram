@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { FileUploader } from "@/components/shared";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -54,6 +55,20 @@ function CreatePostForm() {
                   className="shad-textarea custom-scrollbar"
                   {...field}
                 />
+              </FormControl>
+
+              <FormMessage className="shad-form_message" />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="file"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="shad-form_label">Add Photo</FormLabel>
+              <FormControl>
+                <FileUploader />
               </FormControl>
 
               <FormMessage className="shad-form_message" />
