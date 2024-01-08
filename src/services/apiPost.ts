@@ -1,5 +1,6 @@
 import { INewPost } from "@/types";
 import { supabase, supabaseUrl } from "./supabase";
+import { PostWithCreator } from "@/types/collection";
 
 export async function createPost(post: INewPost) {
   const imageName = `${Math.random()}-${post.file[0].name}`.replaceAll("/", "");
@@ -44,9 +45,10 @@ export async function createPost(post: INewPost) {
 export async function getRecentPosts() {
   const { data, error } = await supabase
     .from("Posts")
-    .select("* , creator(*)")
+    .select("* , creator(username)")
     .order("created_at", { ascending: false })
-    .limit(20);
+    .limit(20)
+    .returns<PostWithCreator[]>();
 
   if (error) {
     console.error(error);

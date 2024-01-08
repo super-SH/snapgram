@@ -1,32 +1,15 @@
 import { multiFormatDateString } from "@/lib/utils";
+import { AccountType, PostWithCreator } from "@/types/collection";
 import { Link } from "react-router-dom";
 
-type Creator = {
-  accountId: string;
-  bio: string | null;
-  created_at: string;
-  email: string;
-  id: number;
-  name: string | null;
-  username: string | null;
-};
-
 type CreatorProps = {
-  creator: Creator;
+  creator: AccountType;
   created_at: string;
   location: string | null;
 };
 
 type PostCardProps = {
-  post: {
-    caption: string;
-    created_at: string;
-    creator: Creator;
-    id: number;
-    imageUrl: string | null;
-    location: string | null;
-    tags: string[];
-  };
+  post: PostWithCreator;
 };
 
 function PostCard({ post }: PostCardProps) {
