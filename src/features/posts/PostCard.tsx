@@ -1,6 +1,7 @@
 import { multiFormatDateString } from "@/lib/utils";
 import { AccountType, PostWithCreator } from "@/types/collection";
 import { Link } from "react-router-dom";
+import { useAccountInfo } from "../accounts/useAccountInfo";
 
 type CreatorProps = {
   creator: AccountType;
@@ -25,6 +26,8 @@ function PostCard({ post }: PostCardProps) {
             location={post.location}
           />
         </div>
+
+        <EditButton postId={post.id} creatorId={post.creator.accountId} />
       </div>
     </li>
   );
@@ -54,6 +57,33 @@ function CreatorDetails({ creator, created_at, location }: CreatorProps) {
         </div>
       </div>
     </>
+  );
+}
+
+function EditButton({
+  postId,
+  creatorId,
+}: {
+  postId: number;
+  creatorId: string;
+}) {
+  const { data, isFetching } = useAccountInfo();
+
+  if (!data && !isFetching) return null;
+
+  const isCreator = data?.accountId === creatorId;
+
+  if (!isCreator) return null;
+
+  return (
+    <Link to={`edit-post/${postId}`}>
+      <img
+        src="/assets/icons/edit.svg"
+        alt="edit icon"
+        height={20}
+        width={20}
+      />
+    </Link>
   );
 }
 

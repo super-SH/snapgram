@@ -45,7 +45,7 @@ export async function createPost(post: INewPost) {
 export async function getRecentPosts() {
   const { data, error } = await supabase
     .from("Posts")
-    .select("* , creator(username)")
+    .select("* , creator(*)")
     .order("created_at", { ascending: false })
     .limit(20)
     .returns<PostWithCreator[]>();
