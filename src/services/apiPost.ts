@@ -5,7 +5,7 @@ import { PostWithCreator } from "@/types/collection";
 export async function createPost(post: INewPost) {
   const imageName = `${Math.random()}-${post.file[0].name}`.replaceAll("/", "");
 
-  const imageUrl = `${supabaseUrl}/storage/v1/object/public/postImage/${imageName}`;
+  const imageUrl = `${supabaseUrl}/storage/v1/object/public/post-images/${imageName}`;
 
   const newPost = {
     imageUrl,
