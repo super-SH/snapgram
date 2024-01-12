@@ -1,9 +1,25 @@
+import React from "react";
 import { PostWithCreator } from "@/types/collection";
+import { useSavedPosts } from "./useSavedPosts";
+import { useSavePost } from "./useSavePost";
 import { useAccountInfo } from "../accounts/useAccountInfo";
 
 function PostStats({ post }: { post: PostWithCreator }) {
-  const { data, isFetching } = useAccountInfo();
-  const accountId = data?.accountId;
+  const { data: savedPosts } = useSavedPosts();
+  const { data: accountData, isFetching } = useAccountInfo();
+
+  const { savePost, isPending } = useSavePost();
+
+  const accountId = accountData?.id;
+
+  function handleSavePost(e: React.MouseEvent) {
+    e.stopPropagation();
+    console.log(savedPosts);
+
+    if (!accountId) return;
+
+    savePost({ accountId, postId: post.id });
+  }
 
   return (
     <div className="z-20 flex items-center justify-between">
@@ -25,6 +41,7 @@ function PostStats({ post }: { post: PostWithCreator }) {
           width={20}
           height={20}
           className="cursor-pointer"
+          onClick={handleSavePost}
         />
       </div>
     </div>

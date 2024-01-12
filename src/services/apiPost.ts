@@ -57,3 +57,35 @@ export async function getRecentPosts() {
 
   return data;
 }
+
+export async function savePost(accountId: number, postId: number) {
+  const { data, error } = await supabase
+    .from("SavedPosts")
+    .insert([{ accountId, postId }])
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Error while saving a post");
+  }
+
+  return data;
+}
+
+export async function getSavedPostOfCurrentAccount(
+  accountId: number | undefined,
+) {
+  console.log(accountId);
+
+  const { data, error } = await supabase
+    .from("SavedPosts")
+    .select("*")
+    .eq("accountId", accountId);
+
+  if (error) {
+    console.log(error);
+    throw new Error("Error while loading saved post");
+  }
+
+  return data;
+}
