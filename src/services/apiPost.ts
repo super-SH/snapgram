@@ -75,8 +75,6 @@ export async function savePost(accountId: number, postId: number) {
 export async function getSavedPostOfCurrentAccount(
   accountId: number | undefined,
 ) {
-  console.log(accountId);
-
   const { data, error } = await supabase
     .from("SavedPosts")
     .select("*")

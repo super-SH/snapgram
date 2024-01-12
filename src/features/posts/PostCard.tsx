@@ -15,8 +15,6 @@ type PostCardProps = {
 };
 
 function PostCard({ post }: PostCardProps) {
-  console.log(post.creator);
-
   return (
     <li className="post-card flex flex-col gap-3">
       <div className="flex-between ">

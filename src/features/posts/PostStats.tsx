@@ -14,8 +14,6 @@ function PostStats({ post }: { post: PostWithCreator }) {
 
   function handleSavePost(e: React.MouseEvent) {
     e.stopPropagation();
-    console.log(savedPosts);
-
     if (!accountId) return;
 
     savePost({ accountId, postId: post.id });

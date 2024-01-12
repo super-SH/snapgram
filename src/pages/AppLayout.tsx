@@ -4,7 +4,6 @@ import { Navigate, Outlet } from "react-router-dom";
 
 function AppLayout() {
   const { isAuthenticated } = useUser();
-  console.log(isAuthenticated);
 
   return (
     <>

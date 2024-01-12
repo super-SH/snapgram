@@ -4,8 +4,6 @@ import { useGetRecentPosts } from "./useGetRecentPosts";
 function PostsContainer() {
   const { data: posts, isFetching } = useGetRecentPosts();
 
-  console.log(posts);
-
   if (isFetching) return "loading";
 
   return (

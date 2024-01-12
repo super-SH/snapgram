@@ -72,7 +72,6 @@ export async function getCurrentAccount() {
 
   if (errorAccount) throw new Error(errorAccount.message);
 
-  console.log(account);
 
   return account;
 }
