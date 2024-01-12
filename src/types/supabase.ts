@@ -77,6 +77,42 @@ export interface Database {
           }
         ]
       }
+      SavedPosts: {
+        Row: {
+          accountId: number | null
+          created_at: string
+          id: number
+          postId: number | null
+        }
+        Insert: {
+          accountId?: number | null
+          created_at?: string
+          id?: number
+          postId?: number | null
+        }
+        Update: {
+          accountId?: number | null
+          created_at?: string
+          id?: number
+          postId?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "SavedPosts_accountId_fkey"
+            columns: ["accountId"]
+            isOneToOne: false
+            referencedRelation: "Accounts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "SavedPosts_postId_fkey"
+            columns: ["postId"]
+            isOneToOne: false
+            referencedRelation: "Posts"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
