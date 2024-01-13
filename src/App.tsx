@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { AppLayout, AuthLayout, CreatePost, Home } from "./pages";
+import { AppLayout, AuthLayout, CreatePost, EditPost, Home } from "./pages";
 import SigninForm from "./features/authentication/SigninForm";
 import SignupForm from "./features/authentication/SignupForm";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -51,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/create-post",
         element: <CreatePost />,
+      },
+      {
+        path: "/edit-post/:postId",
+        element: <EditPost />,
       },
     ],
   },

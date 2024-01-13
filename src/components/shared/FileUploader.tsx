@@ -4,11 +4,12 @@ import { Button } from "../ui/button";
 
 type FileUploaderProps = {
   fieldChange: (files: File[]) => void;
+  mediaUrl?: string;
 };
 
-function FileUploader({ fieldChange }: FileUploaderProps) {
+function FileUploader({ fieldChange, mediaUrl }: FileUploaderProps) {
   const [file, setFile] = useState<File[]>([]);
-  const [fileUrl, setFileUrl] = useState("");
+  const [fileUrl, setFileUrl] = useState(mediaUrl);
 
   const onDrop = useCallback(
     (acceptedFiles: FileWithPath[]) => {
@@ -38,7 +39,7 @@ function FileUploader({ fieldChange }: FileUploaderProps) {
           <div className="flex w-full flex-1 justify-center p-5 lg:p-10">
             <img
               src={fileUrl}
-              alt={file[0].name}
+              alt={file[0]?.name}
               className="file_uploader-img"
             />
           </div>
