@@ -44,6 +44,7 @@ function PostCard({ post }: PostCardProps) {
         <img
           src={post.imageUrl || "/public/assets/icons/profile-placeholder.svg"}
           alt={post.caption}
+          className="post-card_img"
         />
       </Link>
 

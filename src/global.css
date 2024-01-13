@@ -205,7 +205,7 @@
 
   /* File uploader */
   .file_uploader-img {
-    @apply h-80 w-full rounded-[24px] object-cover object-top lg:h-[480px];
+    @apply h-80 w-full rounded-[24px] object-cover object-center lg:h-[480px];
   }
 
   .file_uploader-label {
