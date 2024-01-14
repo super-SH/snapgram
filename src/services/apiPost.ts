@@ -175,7 +175,7 @@ export async function deletePost(postId: number, imageUrl: string) {
   // }
 
   // get imagepathname from url
-  const imagePathName = imageUrl.split("/")[-1];
+  const imagePathName = imageUrl.split("/").slice(-1);
 
   console.log(imagePathName);
 }
