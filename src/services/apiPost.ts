@@ -163,3 +163,19 @@ export async function updatePost(post: IUpdatePost) {
 
   return data;
 }
+
+export async function deletePost(postId: number, imageUrl: string) {
+  if (!postId || !imageUrl) throw new Error("Post could not be deleted");
+
+  // const { error } = await supabase.from("Posts").delete().eq("id", postId);
+
+  // if (error) {
+  //   console.log(error);
+  //   throw new Error("Post could not be deleted");
+  // }
+
+  // get imagepathname from url
+  const imagePathName = imageUrl.split("/")[-1];
+
+  console.log(imagePathName);
+}
