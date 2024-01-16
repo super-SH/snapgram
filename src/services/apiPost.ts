@@ -59,12 +59,8 @@ export async function getRecentPosts() {
 }
 
 export async function getPosts(pageParam: number) {
-  console.log("pageparan", pageParam);
-
   const firstPostIndex = pageParam * POSTS_PER_QUERY;
   const lastPostIndex = (pageParam + 1) * POSTS_PER_QUERY - 1;
-
-  console.log(firstPostIndex, lastPostIndex);
 
   const { data, error } = await supabase
     .from("Posts")

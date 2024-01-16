@@ -1,3 +1,4 @@
+import { PostWithCreator } from "@/types/collection";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -49,3 +50,19 @@ export const multiFormatDateString = (timestamp: string = ""): string => {
       return "Just now";
   }
 };
+
+export function flattenPagesData(
+  pageParams: PostWithCreator[][],
+): PostWithCreator[] {
+  const flattenedData: PostWithCreator[] = [];
+
+  // Iterate through each page
+  pageParams.forEach((page: PostWithCreator[]) => {
+    // Iterate through each item in the page and push it to the flattened array
+    page.forEach((item: PostWithCreator) => {
+      flattenedData.push(item);
+    });
+  });
+
+  return flattenedData;
+}
