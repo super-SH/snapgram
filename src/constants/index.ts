@@ -48,3 +48,5 @@ export const bottombarLinks = [
     label: "Create",
   },
 ];
+
+export const POSTS_PER_QUERY = 2;

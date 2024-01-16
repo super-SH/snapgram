@@ -1,6 +1,7 @@
 import { INewPost, IUpdatePost } from "@/types";
 import { supabase, supabaseUrl } from "./supabase";
 import { PostWithCreator } from "@/types/collection";
+import { POSTS_PER_QUERY } from "@/constants";
 
 export async function createPost(post: INewPost) {
   const imageName = `${Math.random()}-${post.file[0].name}`.replaceAll("/", "");
@@ -47,6 +48,29 @@ export async function getRecentPosts() {
     .select("* , creator(*)")
     .order("created_at", { ascending: false })
     .limit(20)
+    .returns<PostWithCreator[]>();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Posts could not be loaded");
+  }
+
+  return data;
+}
+
+export async function getPosts(pageParam: number) {
+  console.log("pageparan", pageParam);
+
+  const firstPostIndex = pageParam * POSTS_PER_QUERY;
+  const lastPostIndex = (pageParam + 1) * POSTS_PER_QUERY - 1;
+
+  console.log(firstPostIndex, lastPostIndex);
+
+  const { data, error } = await supabase
+    .from("Posts")
+    .select("* , creator(*)", { count: "exact" })
+    .order("created_at", { ascending: false })
+    .range(firstPostIndex, lastPostIndex)
     .returns<PostWithCreator[]>();
 
   if (error) {
