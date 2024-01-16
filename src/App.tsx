@@ -4,6 +4,7 @@ import {
   AuthLayout,
   CreatePost,
   EditPost,
+  Explore,
   Home,
   Post,
 } from "./pages";
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/explore",
-        element: <p>explore</p>,
+        element: <Explore />,
       },
       {
         path: "/all-users",
