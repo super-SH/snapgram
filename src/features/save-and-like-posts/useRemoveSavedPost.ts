@@ -1,4 +1,4 @@
-import { removeSavedPost as removeSavedPostApi } from "@/services/apiPost";
+import { removeSavedPost as removeSavedPostApi } from "@/services/apiSavePost";
 import { AccountType } from "@/types/collection";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 

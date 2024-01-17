@@ -1,15 +1,15 @@
-import { savePost as savePostApi } from "@/services/apiSavePost";
+import { likePost as likePostApi } from "@/services/apiLikePost";
 import { AccountType } from "@/types/collection";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export function useSavePost() {
+export function useLikePost() {
   const queryClient = useQueryClient();
 
   const account = queryClient.getQueryData<AccountType>(["account"]);
   const accountId = account?.id;
 
   const {
-    mutate: savePost,
+    mutate: likePost,
     isPending,
     error,
   } = useMutation({
@@ -19,10 +19,12 @@ export function useSavePost() {
     }: {
       accountId: number;
       postId: number;
-    }) => savePostApi(accountId, postId),
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["saved-posts", accountId] }),
+    }) => likePostApi(accountId, postId),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["liked-posts", accountId] });
+      queryClient.invalidateQueries({ queryKey: ["likes-count", data.postId] });
+    },
   });
 
-  return { savePost, isPending, error };
+  return { likePost, isPending, error };
 }

@@ -39,6 +39,42 @@ export interface Database {
         }
         Relationships: []
       }
+      Likes: {
+        Row: {
+          accountId: number | null
+          created_at: string
+          id: number
+          postId: number | null
+        }
+        Insert: {
+          accountId?: number | null
+          created_at?: string
+          id?: number
+          postId?: number | null
+        }
+        Update: {
+          accountId?: number | null
+          created_at?: string
+          id?: number
+          postId?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "Likes_accountId_fkey"
+            columns: ["accountId"]
+            isOneToOne: false
+            referencedRelation: "Accounts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "Likes_postId_fkey"
+            columns: ["postId"]
+            isOneToOne: false
+            referencedRelation: "Posts"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       Posts: {
         Row: {
           caption: string

@@ -66,3 +66,19 @@ export function flattenPagesData(
 
   return flattenedData;
 }
+
+export function formatCount(number: number): string {
+  const billion = 1e9;
+  const million = 1e6;
+  const thousand = 1e3;
+
+  if (number >= billion) {
+    return (number / billion).toFixed(1) + "b";
+  } else if (number >= million) {
+    return (number / million).toFixed(1) + "m";
+  } else if (number >= thousand) {
+    return (number / thousand).toFixed(1) + "k";
+  } else {
+    return number.toString();
+  }
+}
