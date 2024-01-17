@@ -1,6 +1,6 @@
 import { PostWithCreator } from "@/types/collection";
 import { Link } from "react-router-dom";
-import PostStats from "./PostStats";
+import PostStats from "../save-and-like-posts/PostStats";
 import PostCreatorDetails from "./PostCreatorDetails";
 import EditButton from "./EditButton";
 

@@ -6,7 +6,7 @@ import { useAccountInfo } from "../accounts/useAccountInfo";
 import { Button } from "@/components/ui/button";
 import { useDeletePost } from "./useDeletePost";
 import { useToast } from "@/components/ui/use-toast";
-import PostStats from "./PostStats";
+import PostStats from "../save-and-like-posts/PostStats";
 
 function PostDetail() {
   const { data: post, isFetching } = usePost();
