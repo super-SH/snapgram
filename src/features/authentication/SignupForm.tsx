@@ -56,7 +56,7 @@ function SignupForm() {
   return (
     <>
       <Form {...form}>
-        <div className="flex-center flex max-w-sm flex-col gap-2 sm:max-w-md sm:gap-3">
+        <div className="flex-center flex max-w-sm flex-col gap-2 sm:w-420 sm:max-w-md sm:gap-3 ">
           <img src="/assets/images/logo.svg" alt="logo of snapgram" />
 
           <h2 className="h3-bold md:h2-bold pt-2 capitalize">

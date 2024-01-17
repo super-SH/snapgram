@@ -99,7 +99,7 @@ function SigninForm() {
             className="shad-button_primary"
             disabled={isSigningIn}
           >
-            Sign Up
+            Sign In
           </Button>
 
           <p className="text-small-regular mt-2 text-center text-light-2">
