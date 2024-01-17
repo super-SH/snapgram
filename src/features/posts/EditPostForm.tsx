@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { usePost } from "./usePost";
 import { useUpdatePost } from "./useUpdatePost";
 import CommonPostForm from "./CommonPostForm";
+import { Loader } from "@/components/shared";
 
 function EditPostForm() {
   const { updatePost, isPending: isUpdatingPost } = useUpdatePost();
@@ -14,7 +15,12 @@ function EditPostForm() {
 
   const { data: post, isFetching: isFetchingPost } = usePost();
 
-  if (isFetchingPost) return "loading";
+  if (isFetchingPost)
+    return (
+      <div className="flex-center h-full w-full">
+        <Loader />
+      </div>
+    );
 
   // 2. Define a submit handler.
   function handleSubmit(values: z.infer<typeof PostValidation>) {

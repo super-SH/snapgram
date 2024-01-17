@@ -4,6 +4,7 @@ import { useSavedPosts } from "./useSavedPosts";
 import { useSavePost } from "./useSavePost";
 import { useAccountInfo } from "../accounts/useAccountInfo";
 import { useRemoveSavedPost } from "./useRemoveSavedPost";
+import { Loader } from "@/components/shared";
 
 type PostStatsProps = { post: PostWithCreator };
 
@@ -48,17 +49,21 @@ function PostStats({ post }: PostStatsProps) {
       </div>
 
       <div role="button" onClick={handleSavePost}>
-        <img
-          src={
-            isPostSaved ? "/assets/icons/saved.svg" : "/assets/icons/save.svg"
-          }
-          alt={
-            isPostSaved ? "filled saved file icon" : "outlined save file icon"
-          }
-          width={20}
-          height={20}
-          className="cursor-pointer"
-        />
+        {isSavingPost || isRemovingSavedPost ? (
+          <Loader />
+        ) : (
+          <img
+            src={
+              isPostSaved ? "/assets/icons/saved.svg" : "/assets/icons/save.svg"
+            }
+            alt={
+              isPostSaved ? "filled saved file icon" : "outlined save file icon"
+            }
+            width={20}
+            height={20}
+            className="cursor-pointer"
+          />
+        )}
       </div>
     </div>
   );

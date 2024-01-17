@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { SignupValidation } from "@/lib/validation";
 import { useSignup } from "./useSignup";
 import { useToast } from "@/components/ui/use-toast";
+import { Loader } from "@/components/shared";
 
 function SignupForm() {
   const { toast } = useToast();
@@ -143,7 +144,7 @@ function SignupForm() {
               className="shad-button_primary"
               disabled={isSigningUp}
             >
-              Sign Up
+              {isSigningUp ? <Loader /> : " Sign Up"}
             </Button>
 
             <p className="small-regular mt-2 text-center text-light-2">

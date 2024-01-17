@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { FileUploader } from "@/components/shared";
+import { FileUploader, Loader } from "@/components/shared";
 import { PostWithCreator } from "@/types/collection";
 
 type PostFormProps = {
@@ -118,7 +118,7 @@ function CommonPostForm({ post, onSubmit, isPendingMutation }: PostFormProps) {
             className="shad-button_primary h-12 "
             disabled={isPendingMutation}
           >
-            Submit
+            {isPendingMutation ? <Loader /> : "Submit"}
           </Button>
         </div>
       </form>

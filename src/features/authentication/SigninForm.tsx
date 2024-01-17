@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { SigninValidation } from "@/lib/validation";
 import { useToast } from "@/components/ui/use-toast";
 import { useSignin } from "./useSignin";
+import { Loader } from "@/components/shared";
 
 function SigninForm() {
   const { toast } = useToast();
@@ -99,7 +100,7 @@ function SigninForm() {
             className="shad-button_primary"
             disabled={isSigningIn}
           >
-            Sign In
+            {isSigningIn ? <Loader /> : "Sign In"}
           </Button>
 
           <p className="text-small-regular mt-2 text-center text-light-2">

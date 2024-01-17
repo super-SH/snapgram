@@ -6,6 +6,7 @@ import { useAccountInfo } from "../accounts/useAccountInfo";
 import { useToast } from "@/components/ui/use-toast";
 import { useNavigate } from "react-router-dom";
 import CommonPostForm from "./CommonPostForm";
+import { Loader } from "@/components/shared";
 
 function CreatePostForm() {
   const { createPost, isPending: isCreating } = useCreatePost();
@@ -13,7 +14,12 @@ function CreatePostForm() {
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  if (isFetching) return "loading";
+  if (isFetching)
+    return (
+      <div className="flex-center h-full w-full">
+        <Loader />
+      </div>
+    );
 
   // 2. Define a submit handler.
   function handleSubmit(values: z.infer<typeof PostValidation>) {

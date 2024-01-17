@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useDeletePost } from "./useDeletePost";
 import { useToast } from "@/components/ui/use-toast";
 import PostStats from "../save-and-like-posts/PostStats";
+import { Loader } from "@/components/shared";
 
 function PostDetail() {
   const { data: post, isFetching } = usePost();
@@ -17,7 +18,12 @@ function PostDetail() {
 
   const navigate = useNavigate();
 
-  if (isFetching) return "loading";
+  if (isFetching)
+    return (
+      <div className="flex-center h-full w-full">
+        <Loader />
+      </div>
+    );
 
   if (!post) return "error";
 
