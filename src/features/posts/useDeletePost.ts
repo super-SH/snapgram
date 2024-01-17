@@ -8,7 +8,7 @@ export function useDeletePost() {
     mutationFn: ({ postId, imageUrl }: { postId: number; imageUrl: string }) =>
       deletePostApi(postId, imageUrl),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["recent-posts"] });
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
   });
 

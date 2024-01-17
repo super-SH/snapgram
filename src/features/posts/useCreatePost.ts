@@ -8,7 +8,7 @@ export function useCreatePost() {
   const { mutate: createPost, isPending } = useMutation({
     mutationFn: (post: INewPost) => createPostApi(post),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["recent-posts"] });
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
   });
 
