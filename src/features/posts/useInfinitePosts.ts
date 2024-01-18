@@ -1,6 +1,5 @@
 import { POSTS_PER_QUERY } from "@/constants";
 import { getPosts } from "@/services/apiPost";
-import { PostWithCreator } from "@/types/collection";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 export function useInfinitePosts() {

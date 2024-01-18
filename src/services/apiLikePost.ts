@@ -51,8 +51,6 @@ export async function getLikesCountByPostId(postId: number) {
     .select("", { count: "exact" })
     .eq("postId", postId);
 
-  console.log(count);
-
   if (error) {
     console.log(error);
     throw new Error("Error while loading likes count");

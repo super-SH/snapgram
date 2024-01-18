@@ -52,8 +52,6 @@ function PostStats({ post }: PostStatsProps) {
   const { unlikePost, isPending: isUnlikingPost } = useUnlikePost();
   const { data: likesCount } = useLikesCount(post.id);
 
-  console.log(likesCount);
-
   const accountId = accountData?.id;
 
   const { isPostLiked, isPostSaved, savedPostRecordId, likedPostRecordId } =

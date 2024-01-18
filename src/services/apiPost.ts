@@ -77,6 +77,27 @@ export async function getPosts(pageParam: number) {
   return data;
 }
 
+// might fix that later
+export async function getSearchPosts(searchValue: string) {
+  const { data, error } = await supabase
+    .from("Posts")
+    .select("* , creator(*)", { count: "exact" })
+    .order("created_at", { ascending: false })
+    .ilike("caption", `%${searchValue}%` || "%%")
+    .limit(18)
+    .returns<PostWithCreator[]>();
+
+  console.log(data);
+  console.log(searchValue);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Posts could not be loaded");
+  }
+
+  return data;
+}
+
 export async function getPostById(postId: string | undefined) {
   if (!postId) throw new Error("Post could not be loaded");
 
