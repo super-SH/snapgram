@@ -1,8 +1,16 @@
+import { Loader } from "@/components/shared";
 import { useUser } from "@/features/authentication/useUser";
 import { Navigate, Outlet } from "react-router-dom";
 
 function AuthLayout() {
-  const { isAuthenticated } = useUser();
+  const { isAuthenticated, isFetching: isLoadingUser } = useUser();
+
+  if (isLoadingUser)
+    return (
+      <div className="flex-center h-full w-full">
+        <Loader />
+      </div>
+    );
 
   return (
     <>

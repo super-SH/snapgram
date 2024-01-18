@@ -1,9 +1,16 @@
-import { Bottombar, LeftSidebar, Topbar } from "@/components/shared";
+import { Bottombar, LeftSidebar, Loader, Topbar } from "@/components/shared";
 import { useUser } from "@/features/authentication/useUser";
 import { Navigate, Outlet } from "react-router-dom";
 
 function AppLayout() {
-  const { isAuthenticated } = useUser();
+  const { isAuthenticated, isFetching: isLoadingUser } = useUser();
+
+  if (isLoadingUser)
+    return (
+      <div className="flex-center h-full w-full">
+        <Loader />
+      </div>
+    );
 
   return (
     <>
