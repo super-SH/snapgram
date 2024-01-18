@@ -7,6 +7,7 @@ import {
   Explore,
   Home,
   Post,
+  SavedPosts,
 } from "./pages";
 import SigninForm from "./features/authentication/SigninForm";
 import SignupForm from "./features/authentication/SignupForm";
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/saved",
-        element: <p>saved</p>,
+        element: <SavedPosts />,
       },
       {
         path: "/create-post",

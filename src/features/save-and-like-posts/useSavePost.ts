@@ -21,7 +21,9 @@ export function useSavePost() {
       postId: number;
     }) => savePostApi(accountId, postId),
     onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["saved-posts", accountId] }),
+      queryClient.invalidateQueries({
+        queryKey: ["saved-posts-record", accountId],
+      }),
   });
 
   return { savePost, isPending, error };

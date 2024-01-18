@@ -7,3 +7,7 @@ export type PostRecord = Tables<"Likes">;
 export interface PostWithCreator extends Omit<PostType, "creator"> {
   creator: AccountType;
 }
+
+export interface SavedPost {
+  posdId: PostWithCreator;
+}

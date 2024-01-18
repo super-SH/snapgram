@@ -1,6 +1,6 @@
 import React from "react";
 import { PostRecord, PostWithCreator } from "@/types/collection";
-import { useSavedPosts } from "./useSavedPosts";
+import { useSavedPostsRecord } from "./useSavedPostsRecord";
 import { useSavePost } from "./useSavePost";
 import { useAccountInfo } from "../accounts/useAccountInfo";
 import { useRemoveSavedPost } from "./useRemoveSavedPost";
@@ -21,11 +21,11 @@ interface PostStatus {
 }
 
 function getPostStatus(
-  savedPosts: PostRecord[] | undefined,
+  savedPostsRecord: PostRecord[] | undefined,
   likedPosts: PostRecord[] | undefined,
   postId: number,
 ): PostStatus {
-  const savedPostRecordId = savedPosts?.find(
+  const savedPostRecordId = savedPostsRecord?.find(
     (savePost) => savePost.postId === postId,
   )?.id;
 
@@ -42,12 +42,13 @@ function getPostStatus(
 }
 
 function PostStats({ post }: PostStatsProps) {
-  const { data: savedPosts } = useSavedPosts();
+  const { data: savedPostsRecord } = useSavedPostsRecord();
   const { data: likedPosts } = useLikedPosts();
   const { data: accountData, isFetching } = useAccountInfo();
   const { savePost, isPending: isSavingPost } = useSavePost();
   const { removeSavedPost, isPending: isRemovingSavedPost } =
     useRemoveSavedPost();
+
   const { likePost, isPending: isLikingPost } = useLikePost();
   const { unlikePost, isPending: isUnlikingPost } = useUnlikePost();
   const { data: likesCount } = useLikesCount(post.id);
@@ -55,7 +56,7 @@ function PostStats({ post }: PostStatsProps) {
   const accountId = accountData?.id;
 
   const { isPostLiked, isPostSaved, savedPostRecordId, likedPostRecordId } =
-    getPostStatus(savedPosts, likedPosts, post.id);
+    getPostStatus(savedPostsRecord, likedPosts, post.id);
 
   function handleSavePost(e: React.MouseEvent) {
     e.stopPropagation();

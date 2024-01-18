@@ -11,7 +11,9 @@ export function useRemoveSavedPost() {
   const { mutate: removeSavedPost, isPending } = useMutation({
     mutationFn: (savedRecordId: number) => removeSavedPostApi(savedRecordId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["saved-posts", accountId] });
+      queryClient.invalidateQueries({
+        queryKey: ["saved-posts-record", accountId],
+      });
     },
   });
 
