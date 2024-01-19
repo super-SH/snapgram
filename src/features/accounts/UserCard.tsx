@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { AccountType } from "@/types/collection";
 import { Link } from "react-router-dom";
+import FollowButton from "./FollowButton";
 
 type UserCardProps = {
   account: AccountType;
@@ -24,9 +25,7 @@ function UserCard({ account, showFollowerCounts = false }: UserCardProps) {
           </p>
         </div>
 
-        <Button className="shad-button_primary base-medium w-24 px-2 py-5">
-          Follow
-        </Button>
+        <FollowButton />
       </Link>
     </li>
   );

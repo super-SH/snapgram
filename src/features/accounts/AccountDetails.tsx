@@ -1,15 +1,22 @@
 import { Loader } from "@/components/shared";
 import { useAccountInfoById } from "./useAccountInfoById";
+import { useAccountInfo } from "./useAccountInfo";
+import FollowButton from "./FollowButton";
+import EditButton from "./EditButton";
 
 function AccountDetails() {
   const { data, isFetching } = useAccountInfoById();
+  const { data: currentlyLoggedAccount, isFetching: isFetchingCurrent } =
+    useAccountInfo();
 
-  if (isFetching)
+  if (isFetching || isFetchingCurrent)
     return (
       <div className="flex-center h-full w-full">
         <Loader />
       </div>
     );
+
+  const isCurrentUserProfile = currentlyLoggedAccount?.id === data?.id;
 
   return (
     <>
@@ -20,11 +27,16 @@ function AccountDetails() {
       />
 
       <div className="flex w-full flex-col gap-4">
-        <div className="flex flex-col items-center justify-start gap-0.5 xl:items-start">
-          <p className="text-3xl font-semibold text-white xl:text-4xl">
-            {data?.name}
-          </p>
-          <p className="text-base text-light-3 xl:text-lg">@{data?.username}</p>
+        <div className="flex flex-col items-center gap-4 xl:items-start">
+          <div className="flex flex-col items-center justify-start gap-0.5 xl:items-start">
+            <p className="text-3xl font-semibold text-white xl:text-4xl">
+              {data?.name}
+            </p>
+            <p className="text-base text-light-3 xl:text-lg">
+              @{data?.username}
+            </p>
+          </div>
+          {isCurrentUserProfile ? <EditButton /> : <FollowButton />}
         </div>
 
         <div className="flex justify-center gap-4 xl:justify-start">
