@@ -1,4 +1,4 @@
-import { getCurrentAccount } from "@/services/apiUser";
+import { getCurrentAccount } from "@/services/apiAccount";
 import { useQuery } from "@tanstack/react-query";
 
 export function useAccountInfo() {
