@@ -16,3 +16,14 @@ export async function getCurrentAccount() {
 
   return account;
 }
+
+export async function getAccounts() {
+  const { data, error } = await supabase.from("Accounts").select("*").limit(20);
+
+  if (error) {
+    console.log(error);
+    throw new Error("Account could not be loaded");
+  }
+
+  return data;
+}

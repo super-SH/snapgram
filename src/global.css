@@ -145,13 +145,19 @@
     @apply custom-scrollbar hidden w-72 flex-col gap-10 overflow-scroll px-6 py-10  xl:flex 2xl:min-w-[456px];
   }
 
+  /* All People */
+
+  .people-container {
+    @apply custom-scrollbar flex flex-1  flex-col items-center gap-6 overflow-scroll px-6 py-10 md:gap-9 md:p-14;
+  }
+
   /* Top Creators */
   .user-cards-container {
-    @apply flex flex-1 flex-wrap gap-5;
+    @apply flex w-full max-w-5xl flex-1 flex-wrap content-start items-start justify-start gap-5;
   }
 
   .user-card {
-    @apply flex-center w-48 flex-col gap-4 rounded-[20px] border border-dark-4 px-4 py-5;
+    @apply flex-center w-48 flex-col   gap-4 rounded-[20px] border border-dark-4 px-4 py-5;
   }
 
   /* Post Details */

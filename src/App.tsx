@@ -6,6 +6,7 @@ import {
   EditPost,
   Explore,
   Home,
+  People,
   Post,
   SavedPosts,
 } from "./pages";
@@ -50,8 +51,8 @@ const router = createBrowserRouter([
         element: <Explore />,
       },
       {
-        path: "/all-users",
-        element: <p>all-users</p>,
+        path: "/all-accounts",
+        element: <People />,
       },
       {
         path: "/saved",

@@ -1,9 +1,8 @@
+import { Loader } from "@/components/shared";
 import { useAccounts } from "@/services/useAccounts";
 import UserCardsContainer from "./UserCardsContainer";
-import { Loader } from "@/components/shared";
 
-function TopCreators() {
-  // Change these data after implementing follow feature
+function AllAccounts() {
   const { data, isFetching } = useAccounts();
 
   if (isFetching)
@@ -11,11 +10,7 @@ function TopCreators() {
       <Loader />
     </div>;
 
-  return (
-    <>
-      <UserCardsContainer accounts={data || []} />;
-    </>
-  );
+  return <UserCardsContainer accounts={data || []} />;
 }
 
-export default TopCreators;
+export default AllAccounts;
