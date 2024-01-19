@@ -1,3 +1,4 @@
+import TopCreators from "@/features/accounts/TopCreators";
 import PostsContainer from "@/features/posts/PostsContainer";
 
 function Home() {
@@ -9,6 +10,12 @@ function Home() {
 
           <PostsContainer />
         </div>
+      </div>
+
+      <div className="home-creators">
+        <h3 className="h3-bold w-full text-left">Top Creators</h3>
+
+        <TopCreators />
       </div>
     </div>
   );

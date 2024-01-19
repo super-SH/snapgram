@@ -142,7 +142,16 @@
   }
 
   .home-creators {
-    @apply custom-scrollbar hidden w-72 flex-col gap-10 overflow-scroll px-6 py-10  xl:flex 2xl:w-465;
+    @apply custom-scrollbar hidden w-72 flex-col gap-10 overflow-scroll px-6 py-10  xl:flex 2xl:min-w-[456px];
+  }
+
+  /* Top Creators */
+  .user-cards-container {
+    @apply flex flex-1 flex-wrap gap-5;
+  }
+
+  .user-card {
+    @apply flex-center w-48 flex-col gap-4 rounded-[20px] border border-dark-4 px-4 py-5;
   }
 
   /* Post Details */
@@ -261,11 +270,6 @@
   .topbar {
     @apply sticky top-0 z-50 w-full bg-dark-2 md:hidden;
   }
-
-  /* User card */
-  .user-card {
-    @apply flex-center flex-col gap-4 rounded-[20px] border border-dark-4 px-5 py-8;
-  }
 }
 
 @layer components {
@@ -289,7 +293,7 @@
 
   /* Button */
   .shad-button_primary {
-    @apply flex gap-2 bg-primary-500 text-light-1 hover:bg-primary-500 !important;
+    @apply flex gap-2 bg-primary-500 text-light-1 hover:bg-primary-500/90 !important;
   }
 
   .shad-button_dark_4 {
