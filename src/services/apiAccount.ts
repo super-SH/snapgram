@@ -1,6 +1,18 @@
 import { supabase } from "./supabase";
 
-export async function getCurrentAccount() {
+export async function getAccount(accountId?: number) {
+  if (accountId) {
+    const { data: account, error } = await supabase
+      .from("Accounts")
+      .select("*")
+      .eq("id", accountId)
+      .single();
+
+    if (error) throw new Error(error.message);
+
+    return account;
+  }
+
   const { data, error } = await supabase.auth.getUser();
 
   if (!data) return null;

@@ -8,6 +8,7 @@ import {
   Home,
   People,
   Post,
+  Profile,
   SavedPosts,
 } from "./pages";
 import SigninForm from "./features/authentication/SigninForm";
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: "/posts/:postId",
         element: <Post />,
+      },
+      {
+        path: "/profile/:accountId",
+        element: <Profile />,
       },
     ],
   },

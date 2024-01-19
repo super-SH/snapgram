@@ -7,3 +7,4 @@ export { default as Post } from "./Post";
 export { default as Explore } from "./Explore";
 export { default as SavedPosts } from "./SavedPosts";
 export { default as People } from "./People";
+export { default as Profile } from "./Profile";
