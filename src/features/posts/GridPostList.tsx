@@ -16,7 +16,10 @@ function GridPostList({
   return (
     <ul className="grid-container">
       {posts.map((post) => (
-        <li key={post.id} className="relative h-72 min-w-72">
+        <li
+          key={post.id}
+          className="relative h-64 min-w-60 xs:h-72 xs:min-w-72"
+        >
           <Link to={`/posts/${post.id}`} className="grid-post_link">
             <img
               src={post.imageUrl || ""}
