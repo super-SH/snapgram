@@ -41,14 +41,17 @@ function GridPostList({
 
           <div className="grid-post_user">
             {!showUserData ? null : (
-              <div className="flex flex-1 items-center justify-start gap-2">
+              <Link
+                className="flex flex-1 items-center justify-start gap-2"
+                to={`/profile/${post.creator.id}`}
+              >
                 <img
                   src={`/assets/icons/profile-placeholder.svg`}
                   alt="post creator profile"
                   className="h-8 w-8 rounded-full"
                 />
                 <p className="line-clamp-1">{post.creator.name}</p>
-              </div>
+              </Link>
             )}
 
             {!showStats ? null : <PostStats post={post} />}
