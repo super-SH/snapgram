@@ -3,9 +3,19 @@ import EditProfileForm from "./EditProfileForm";
 import * as z from "zod";
 import { useAccountInfo } from "./useAccountInfo";
 import { Loader } from "@/components/shared";
+import { useUpdateProfile } from "./useUpdateProfile";
+import { useNavigate, useParams } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
 
 function EditFormContainer() {
+  const { accountId } = useParams();
+  const { toast } = useToast();
+  const navigate = useNavigate();
+
   const { data, isFetching } = useAccountInfo();
+  const { mutate: updateProfile, isPending: isUpdatingProfile } =
+    useUpdateProfile();
+
   if (isFetching)
     return (
       <div className="flex-center h-full w-full">
@@ -21,15 +31,34 @@ function EditFormContainer() {
     );
 
   function onSubmit(values: z.infer<typeof AccountValidation>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    if (!accountId) return;
+    updateProfile(
+      { ...values, accountId: Number(accountId) },
+      {
+        onSuccess: () => {
+          toast({ description: "Profile successfully updated" });
+        },
+        onError: () => {
+          toast({
+            variant: "destructive",
+            description: "Something went wrong, please try again.",
+          });
+        },
+        onSettled: () => {
+          navigate(`/profile/${accountId}`);
+        },
+      },
+    );
   }
 
   return (
     <>
       {data && (
-        <EditProfileForm onSubmit={onSubmit} account={data} isEditing={false} />
+        <EditProfileForm
+          onSubmit={onSubmit}
+          account={data}
+          isEditing={isUpdatingProfile}
+        />
       )}
     </>
   );
