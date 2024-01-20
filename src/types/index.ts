@@ -27,3 +27,11 @@ export type IUpdatePost = {
   location?: string;
   tags?: string;
 };
+
+export type IUpdateUser = {
+  username: string;
+  name: string;
+  bio: string;
+  // imageUrl: URL | string;
+  // file: File[];
+};

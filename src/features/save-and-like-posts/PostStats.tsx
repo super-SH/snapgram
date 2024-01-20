@@ -45,7 +45,9 @@ function getPostStatus(
 function PostStats({ post }: PostStatsProps) {
   const { data: savedPostsRecord } = useSavedPostsRecord();
   const { data: likedPostsRecord } = useLikedPostsRecord();
+
   const { data: accountData, isFetching } = useAccountInfo();
+
   const { savePost, isPending: isSavingPost } = useSavePost();
   const { removeSavedPost, isPending: isRemovingSavedPost } =
     useRemoveSavedPost();

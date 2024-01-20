@@ -4,6 +4,7 @@ import {
   AuthLayout,
   CreatePost,
   EditPost,
+  EditProfile,
   Explore,
   Home,
   People,
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
             element: <LikedPost />,
           },
         ],
+      },
+      {
+        path: "/edit-profile/:accountId",
+        element: <EditProfile />,
       },
     ],
   },

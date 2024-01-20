@@ -8,3 +8,4 @@ export { default as Explore } from "./Explore";
 export { default as SavedPosts } from "./SavedPosts";
 export { default as People } from "./People";
 export { default as Profile } from "./Profile";
+export { default as EditProfile } from "./EditProfile";
