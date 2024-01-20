@@ -28,5 +28,5 @@ export const PostValidation = z.object({
 export const AccountValidation = z.object({
   username: z.string().min(2).max(40),
   name: z.string().min(2).max(40),
-  bio: z.string().min(2).max(2200),
+  bio: z.string().max(2200),
 });

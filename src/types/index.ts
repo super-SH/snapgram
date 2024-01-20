@@ -29,6 +29,7 @@ export type IUpdatePost = {
 };
 
 export type IUpdateUser = {
+  accountId: number;
   username: string;
   name: string;
   bio: string;

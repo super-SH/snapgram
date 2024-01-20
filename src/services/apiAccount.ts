@@ -1,3 +1,4 @@
+import { IUpdateUser } from "@/types";
 import { supabase } from "./supabase";
 
 export async function getAccount(accountId?: number) {
@@ -35,6 +36,27 @@ export async function getAccounts() {
   if (error) {
     console.log(error);
     throw new Error("Account could not be loaded");
+  }
+
+  return data;
+}
+
+export async function updateProfile(profile: IUpdateUser) {
+  const updatedProfile = {
+    username: profile.username,
+    name: profile.name,
+    bio: profile.bio,
+  };
+
+  const { data, error } = await supabase
+    .from("Accounts")
+    .update(updatedProfile)
+    .eq("id", profile.accountId);
+
+  if (error) {
+    console.log(error);
+
+    throw new Error("Profile could not be updated");
   }
 
   return data;
