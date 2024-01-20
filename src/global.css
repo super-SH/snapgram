@@ -191,7 +191,13 @@
   }
 
   .profile-tab {
-    @apply flex-center w-48 flex-1 gap-3 bg-dark-2  py-4 transition xl:flex-initial;
+    @apply flex-center w-48 flex-1 gap-3 border  border-dark-4 bg-dark-2 py-4 transition xl:flex-initial;
+  }
+
+  .profile-tab.active:link,
+  .profile-tab.active:visited,
+  .profile-tab:hover {
+    @apply bg-dark-1;
   }
 
   /* Saved */

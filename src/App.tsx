@@ -16,6 +16,8 @@ import SignupForm from "./features/authentication/SignupForm";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "./components/ui/toaster";
+import CreatedPost from "./features/accounts/CreatedPost";
+import LikedPost from "./features/accounts/LikedPost";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -74,6 +76,16 @@ const router = createBrowserRouter([
       {
         path: "/profile/:accountId",
         element: <Profile />,
+        children: [
+          {
+            index: true,
+            element: <CreatedPost />,
+          },
+          {
+            path: "liked-posts",
+            element: <LikedPost />,
+          },
+        ],
       },
     ],
   },
