@@ -1,5 +1,16 @@
+import { Loader } from "@/components/shared";
+import { useLikedPosts } from "../save-and-like-posts/useLikedPosts";
+import GridPostList from "@/components/shared/GridPostList";
+
 function LikedPost() {
-  return <div>LikedPost</div>;
+  const { data, isFetching } = useLikedPosts();
+
+  if (isFetching)
+    <div className="flex-center w-full">
+      <Loader />
+    </div>;
+
+  return <GridPostList posts={data || []} showStats={false} />;
 }
 
 export default LikedPost;

@@ -11,7 +11,9 @@ export function useUnlikePost() {
   const { mutate: unlikePost, isPending } = useMutation({
     mutationFn: (likedRecordId: number) => unlikePostApi(likedRecordId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["liked-posts", accountId] });
+      queryClient.invalidateQueries({
+        queryKey: ["liked-posts-record", accountId],
+      });
       queryClient.invalidateQueries({ queryKey: ["likes-count"] });
     },
   });

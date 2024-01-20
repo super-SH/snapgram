@@ -1,3 +1,4 @@
+import { LikedPost, PostWithCreator } from "@/types/collection";
 import { supabase } from "./supabase";
 
 export async function likePost(accountId: number, postId: number) {
@@ -27,7 +28,7 @@ export async function unlikePost(likesRecordId: number) {
   }
 }
 
-export async function getLikedPosts(accountId: number | undefined) {
+export async function getLikedPostsRecord(accountId: number | undefined) {
   if (!accountId) return;
 
   const { data, error } = await supabase
@@ -41,6 +42,25 @@ export async function getLikedPosts(accountId: number | undefined) {
   }
 
   return data;
+}
+
+export async function getLikedPosts(accountId: number | undefined) {
+  if (!accountId) return;
+
+  const { data, error } = await supabase
+    .from("Likes")
+    .select("postId(*, creator(*))")
+    .eq("accountId", accountId)
+    .returns<LikedPost[]>();
+
+  if (error) {
+    console.log(error);
+    throw new Error("Error while loading liked post");
+  }
+
+  const posts: PostWithCreator[] = data.map((item) => Object.values(item)[0]);
+
+  return posts;
 }
 
 export async function getLikesCountByPostId(postId: number) {

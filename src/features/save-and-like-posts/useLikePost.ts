@@ -21,7 +21,9 @@ export function useLikePost() {
       postId: number;
     }) => likePostApi(accountId, postId),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["liked-posts", accountId] });
+      queryClient.invalidateQueries({
+        queryKey: ["liked-posts-record", accountId],
+      });
       queryClient.invalidateQueries({ queryKey: ["likes-count", data.postId] });
     },
   });

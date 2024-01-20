@@ -11,3 +11,6 @@ export interface PostWithCreator extends Omit<PostType, "creator"> {
 export interface SavedPost {
   posdId: PostWithCreator;
 }
+export interface LikedPost {
+  posdId: PostWithCreator;
+}
