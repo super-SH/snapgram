@@ -2,7 +2,7 @@ import { PostWithCreator } from "@/types/collection";
 import { Link } from "react-router-dom";
 import PostStats from "../save-and-like-posts/PostStats";
 import PostCreatorDetails from "./PostCreatorDetails";
-import EditButton from "./EditButton";
+import EditPostButton from "./EditPostButton";
 
 type PostCardProps = {
   post: PostWithCreator;
@@ -18,7 +18,7 @@ function PostCard({ post }: PostCardProps) {
           location={post.location}
         />
 
-        <EditButton postId={post.id} creatorId={post.creator.accountId} />
+        <EditPostButton postId={post.id} creatorId={post.creator.accountId} />
       </div>
 
       <Link to={`posts/${post.id}`}>

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import PostCreatorDetails from "./PostCreatorDetails";
 import { usePost } from "./usePost";
-import EditButton from "./EditButton";
+import EditPostButton from "./EditPostButton";
 import { useAccountInfo } from "../accounts/useAccountInfo";
 import { Button } from "@/components/ui/button";
 import { useDeletePost } from "./useDeletePost";
@@ -60,7 +60,10 @@ function PostDetail() {
           />
           {isCreator ? (
             <div className="flex-center gap-2">
-              <EditButton postId={post.id} creatorId={post.creator.accountId} />
+              <EditPostButton
+                postId={post.id}
+                creatorId={post.creator.accountId}
+              />
               <Button
                 onClick={handleDeletePost}
                 variant="ghost"

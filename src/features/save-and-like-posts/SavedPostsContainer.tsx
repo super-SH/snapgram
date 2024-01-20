@@ -1,5 +1,5 @@
 import { Loader } from "@/components/shared";
-import GridPostList from "../posts/GridPostList";
+import GridPostList from "../../components/shared/GridPostList";
 import { useSavedPosts } from "./useSavedPosts";
 
 function SavedPostsContainer() {

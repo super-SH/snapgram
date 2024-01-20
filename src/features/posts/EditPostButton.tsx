@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAccountInfo } from "../accounts/useAccountInfo";
 
-function EditButton({
+function EditPostButton({
   postId,
   creatorId,
 }: {
@@ -28,4 +28,4 @@ function EditButton({
   );
 }
 
-export default EditButton;
+export default EditPostButton;

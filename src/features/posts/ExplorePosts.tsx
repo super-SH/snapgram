@@ -1,6 +1,6 @@
 import { flattenPagesData } from "@/lib/utils";
 import { useInfinitePosts } from "./useInfinitePosts";
-import GridPostList from "./GridPostList";
+import GridPostList from "../../components/shared/GridPostList";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { Loader } from "@/components/shared";

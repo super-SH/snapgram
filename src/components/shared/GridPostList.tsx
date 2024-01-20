@@ -1,6 +1,6 @@
 import { PostWithCreator } from "@/types/collection";
 import { Link } from "react-router-dom";
-import PostStats from "../save-and-like-posts/PostStats";
+import PostStats from "../../features/save-and-like-posts/PostStats";
 
 type GridPostListProp = {
   posts: PostWithCreator[];

@@ -2,7 +2,7 @@ import { Loader } from "@/components/shared";
 import { useAccountInfoById } from "./useAccountInfoById";
 import { useAccountInfo } from "./useAccountInfo";
 import FollowButton from "./FollowButton";
-import EditButton from "./EditButton";
+import EditProfileButton from "./EditProfileButton";
 
 function AccountDetails() {
   const { data, isFetching } = useAccountInfoById();
@@ -36,7 +36,7 @@ function AccountDetails() {
               @{data?.username}
             </p>
           </div>
-          {isCurrentUserProfile ? <EditButton /> : <FollowButton />}
+          {isCurrentUserProfile ? <EditProfileButton /> : <FollowButton />}
         </div>
 
         <div className="flex justify-center gap-4 xl:justify-start">

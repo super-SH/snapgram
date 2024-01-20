@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
-function EditButton() {
+function EditProfileButton() {
   const navigate = useNavigate();
 
   return (
@@ -29,4 +29,4 @@ function EditButton() {
   );
 }
 
-export default EditButton;
+export default EditProfileButton;
