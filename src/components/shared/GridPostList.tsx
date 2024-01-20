@@ -13,7 +13,7 @@ function GridPostList({
   posts,
   showUserData = true,
   showStats = true,
-  noPostMsg = "There is no post show yet.",
+  noPostMsg = "There is no post to show yet.",
 }: GridPostListProp) {
   if (posts.length === 0)
     return (

@@ -6,9 +6,11 @@ function LikedPost() {
   const { data, isFetching } = useLikedPosts();
 
   if (isFetching)
-    <div className="flex-center w-full">
-      <Loader />
-    </div>;
+    return (
+      <div className="flex-center w-full">
+        <Loader />
+      </div>
+    );
 
   return (
     <GridPostList
