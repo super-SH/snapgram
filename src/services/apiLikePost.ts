@@ -27,9 +27,7 @@ export async function unlikePost(likesRecordId: number) {
   }
 }
 
-export async function getLikedPostOfCurrentAccount(
-  accountId: number | undefined,
-) {
+export async function getLikedPosts(accountId: number | undefined) {
   if (!accountId) return;
 
   const { data, error } = await supabase
