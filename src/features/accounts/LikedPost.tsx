@@ -10,7 +10,13 @@ function LikedPost() {
       <Loader />
     </div>;
 
-  return <GridPostList posts={data || []} showStats={false} />;
+  return (
+    <GridPostList
+      posts={data || []}
+      showStats={false}
+      noPostMsg="This account has no liked post."
+    />
+  );
 }
 
 export default LikedPost;
