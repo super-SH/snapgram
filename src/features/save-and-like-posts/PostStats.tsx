@@ -91,7 +91,7 @@ function PostStats({ post }: PostStatsProps) {
         {isLikingPost || isUnlikingPost ? (
           <Loader />
         ) : (
-          <>
+          <div className="flex h-5 items-center gap-2">
             <img
               src={
                 isPostLiked
@@ -106,7 +106,7 @@ function PostStats({ post }: PostStatsProps) {
             <p className="small-medium lg:base-medium">
               {formatCount(likesCount || 0)}
             </p>
-          </>
+          </div>
         )}
       </div>
 
