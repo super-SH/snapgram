@@ -21,13 +21,11 @@ function CreatePostForm() {
       </div>
     );
 
-  // 2. Define a submit handler.
   function handleSubmit(values: z.infer<typeof PostValidation>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+
     const accountId = account?.id;
     if (!accountId) return;
-    console.log(values);
+    
     createPost(
       { ...values, accountId },
       {

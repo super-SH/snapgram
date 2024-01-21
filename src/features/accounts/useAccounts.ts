@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAccounts } from "./apiAccount";
+import { getAccounts } from "../../services/apiAccount";
 
 export function useAccounts() {
   const { data, error, isFetching } = useQuery({

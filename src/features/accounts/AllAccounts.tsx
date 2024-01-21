@@ -1,5 +1,5 @@
 import { Loader } from "@/components/shared";
-import { useAccounts } from "@/services/useAccounts";
+import { useAccounts } from "@/features/accounts/useAccounts";
 import UserCardsContainer from "./UserCardsContainer";
 
 function AllAccounts() {

@@ -22,10 +22,9 @@ function EditPostForm() {
       </div>
     );
 
-  // 2. Define a submit handler.
+
   function handleSubmit(values: z.infer<typeof PostValidation>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+
     if (post) {
       updatePost(
         { ...values, postId: post?.id, imageUrl: post?.imageUrl },

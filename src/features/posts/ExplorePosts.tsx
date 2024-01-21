@@ -36,8 +36,6 @@ function ExplorePosts() {
 
   const showExplorePosts = flattenPagesData(data?.pages);
 
-  // console.log(searchPosts);
-  // console.log(showExplorePosts);
 
   return (
     <>
