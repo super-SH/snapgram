@@ -49,4 +49,4 @@ export const bottombarLinks = [
   },
 ];
 
-export const POSTS_PER_QUERY = 3;
+export const POSTS_PER_QUERY = 12;
