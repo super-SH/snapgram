@@ -33,6 +33,6 @@ export type IUpdateUser = {
   username: string;
   name: string;
   bio: string;
-  // imageUrl: URL | string;
-  // file: File[];
+  imageUrl?: string | null;
+  file: File[];
 };

@@ -1,4 +1,5 @@
 import { Loader } from "@/components/shared";
+import ProfileUploader from "@/components/shared/ProfileUploader";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -35,6 +36,7 @@ function EditProfileForm({
       username: account?.username ? account.username : "",
       name: account?.name ? account.name : "",
       bio: account?.bio ? account.bio : "",
+      file: [],
     },
   });
 
@@ -44,6 +46,22 @@ function EditProfileForm({
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex w-full max-w-5xl flex-col gap-8"
       >
+        <FormField
+          control={form.control}
+          name="file"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <ProfileUploader
+                  fieldChange={field.onChange}
+                  profileUrl={account?.profileUrl || ""}
+                />
+              </FormControl>
+
+              <FormMessage className="shad-form_message" />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="username"

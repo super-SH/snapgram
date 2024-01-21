@@ -46,9 +46,13 @@ function GridPostList({
                 to={`/profile/${post.creator.id}`}
               >
                 <img
-                  src={`/assets/icons/profile-placeholder.svg`}
+                  src={
+                    post.creator.profileUrl
+                      ? post.creator.profileUrl
+                      : `/assets/icons/profile-placeholder.svg`
+                  }
                   alt="post creator profile"
-                  className="h-8 w-8 rounded-full"
+                  className="h-8 w-8 rounded-full object-cover  object-center"
                 />
                 <p className="line-clamp-1">{post.creator.name}</p>
               </Link>

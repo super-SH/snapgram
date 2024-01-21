@@ -17,9 +17,13 @@ function PostCreatorDetails({
     <div className="flex items-center gap-3">
       <Link to={`profile/${creator.id}`}>
         <img
-          src={"/assets/icons/profile-placeholder.svg"}
+          src={
+            creator.profileUrl
+              ? creator.profileUrl
+              : "/assets/icons/profile-placeholder.svg"
+          }
           alt={creator.name || "default profile"}
-          className="h-12 w-12 rounded-full"
+          className="h-12 w-12 rounded-full object-cover  object-center"
         />
       </Link>
 

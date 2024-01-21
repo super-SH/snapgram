@@ -29,4 +29,5 @@ export const AccountValidation = z.object({
   username: z.string().min(2).max(40),
   name: z.string().min(2).max(40),
   bio: z.string().max(2200),
+  file: z.custom<File[]>(),
 });

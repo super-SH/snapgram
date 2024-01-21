@@ -1,5 +1,5 @@
 import { IUpdateUser } from "@/types";
-import { supabase } from "./supabase";
+import { supabase, supabaseUrl } from "./supabase";
 
 export async function getAccount(accountId?: number) {
   if (accountId) {
@@ -42,10 +42,31 @@ export async function getAccounts() {
 }
 
 export async function updateProfile(profile: IUpdateUser) {
+  const hasFileToUpdate = profile.file.length > 0;
+
+  let imageUrl = profile.imageUrl;
+  let imageName: string | undefined;
+
+  if (hasFileToUpdate) {
+    imageName = `${Math.random()}-${profile.file[0].name}`.replaceAll("/", "");
+    imageUrl = `${supabaseUrl}/storage/v1/object/public/profile-images/${imageName}`;
+
+    const { error: storageError } = await supabase.storage
+      .from("profile-images")
+      .upload(imageName, profile.file[0]);
+
+    if (storageError) {
+      console.error(storageError);
+      throw new Error("Profile image could not be uploaded");
+    }
+  }
+
   const updatedProfile = {
     username: profile.username,
     name: profile.name,
     bio: profile.bio,
+    profileUrl: imageUrl,
+    profileImgName: imageName,
   };
 
   const { data, error } = await supabase

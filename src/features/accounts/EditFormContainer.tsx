@@ -33,7 +33,7 @@ function EditFormContainer() {
   function onSubmit(values: z.infer<typeof AccountValidation>) {
     if (!accountId) return;
     updateProfile(
-      { ...values, accountId: Number(accountId) },
+      { ...values, accountId: Number(accountId), imageUrl: data?.profileUrl },
       {
         onSuccess: () => {
           toast({ description: "Profile successfully updated" });

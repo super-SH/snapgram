@@ -11,7 +11,7 @@ function People() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle cx="9" cy="6" r="4" stroke="#fff" stroke-width="1.5" />
+          <circle cx="9" cy="6" r="4" stroke="#fff" strokeWidth="1.5" />
           <path
             d="M15 9C16.6569 9 18 7.65685 18 6C18 4.34315 16.6569 3 15 3"
             stroke="#fff"

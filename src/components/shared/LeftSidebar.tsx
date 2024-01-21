@@ -18,8 +18,12 @@ function LeftSidebar() {
 
         <Link to={`/profile/${data?.id}`} className="flex items-center gap-3">
           <img
-            className="h-12 w-12 rounded-full"
-            src="/assets/icons/profile-placeholder.svg"
+            className="h-12 w-12 rounded-full object-cover  object-center"
+            src={
+              data?.profileUrl
+                ? data.profileUrl
+                : `/assets/icons/profile-placeholder.svg`
+            }
             alt="profile"
           />
 

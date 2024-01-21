@@ -21,9 +21,13 @@ function AccountDetails() {
   return (
     <>
       <img
-        src={"/assets/icons/profile-placeholder.svg"}
+        src={
+          data?.profileUrl
+            ? data.profileUrl
+            : "/assets/icons/profile-placeholder.svg"
+        }
         alt={"default profile"}
-        className="h-20 w-20 rounded-full xl:h-36 xl:w-36"
+        className="h-20 w-20 rounded-full object-cover object-center xl:h-36  xl:w-36"
       />
 
       <div className="flex w-full flex-col gap-4">
