@@ -14,7 +14,7 @@ function CreatedPost() {
 
   return (
     <GridPostList
-      posts={data || []}
+      posts={data?.posts || []}
       showStats={false}
       showUserData={false}
       noPostMsg="This account hasn't created a post yet."

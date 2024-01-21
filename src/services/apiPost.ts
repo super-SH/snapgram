@@ -81,7 +81,11 @@ export async function getCreatedPostsByAccountId(accountId: number) {
   if (!accountId || isNaN(accountId))
     throw new Error("Posts could not be loaded");
 
-  const { data, error } = await supabase
+  const {
+    data: posts,
+    error,
+    count,
+  } = await supabase
     .from("Posts")
     .select("* , creator(*)", { count: "exact" })
     .order("created_at", { ascending: false })
@@ -93,7 +97,7 @@ export async function getCreatedPostsByAccountId(accountId: number) {
     throw new Error("Posts could not be loaded");
   }
 
-  return data;
+  return { posts, count };
 }
 
 // might fix that later

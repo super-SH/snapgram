@@ -48,8 +48,6 @@ function SigninForm() {
         form.reset();
       },
     });
-
-    console.log(user);
   }
 
   return (

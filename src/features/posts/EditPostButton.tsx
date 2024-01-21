@@ -17,7 +17,7 @@ function EditPostButton({
   if (!isCreator) return null;
 
   return (
-    <Link to={`edit-post/${postId}`}>
+    <Link to={`/edit-post/${postId}`}>
       <img
         src="/assets/icons/edit.svg"
         alt="edit icon"

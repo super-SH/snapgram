@@ -51,7 +51,6 @@ function SignupForm() {
       },
     });
 
-    console.log(newUser);
   }
 
   return (

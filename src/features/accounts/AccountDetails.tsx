@@ -3,6 +3,7 @@ import { useAccountInfoById } from "./useAccountInfoById";
 import { useAccountInfo } from "./useAccountInfo";
 import FollowButton from "./FollowButton";
 import EditProfileButton from "./EditProfileButton";
+import ProfileStats from "./ProfileStats";
 
 function AccountDetails() {
   const { data, isFetching } = useAccountInfoById();
@@ -26,8 +27,8 @@ function AccountDetails() {
             ? data.profileUrl
             : "/assets/icons/profile-placeholder.svg"
         }
-        alt={"default profile"}
-        className="h-20 w-20 rounded-full object-cover object-center xl:h-36  xl:w-36"
+        alt={data?.profileImgName ? data.profileImgName : "default profile"}
+        className="h-20 w-20 rounded-full object-cover object-center xl:h-36 xl:w-36"
       />
 
       <div className="flex w-full flex-col gap-4">
@@ -43,20 +44,9 @@ function AccountDetails() {
           {isCurrentUserProfile ? <EditProfileButton /> : <FollowButton />}
         </div>
 
-        <div className="flex justify-center gap-4 xl:justify-start">
-          <div>
-            <p className="text-xl font-medium text-primary-500">0</p>
-            <p className="text-lg font-medium">Posts</p>
-          </div>
-          <div>
-            <p className="text-xl font-medium text-primary-500">0</p>
-            <p className="text-lg font-medium">Followers</p>
-          </div>
-          <div>
-            <p className="text-xl font-medium text-primary-500">0</p>
-            <p className="text-lg font-medium">Following</p>
-          </div>
-        </div>
+        <ProfileStats />
+
+        <p className="text-center xl:text-start ">{data?.bio}</p>
       </div>
     </>
   );
