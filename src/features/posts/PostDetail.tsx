@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PostCreatorDetails from "./PostCreatorDetails";
 import { usePost } from "./usePost";
 import EditPostButton from "./EditPostButton";
@@ -68,13 +68,18 @@ function PostDetail() {
                 onClick={handleDeletePost}
                 variant="ghost"
                 className={`ghost_details-delete_btn`}
+                disabled={isDeleting}
               >
-                <img
-                  src={"/assets/icons/delete.svg"}
-                  alt="trash can icon"
-                  width={20}
-                  height={20}
-                />
+                {isDeleting ? (
+                  <Loader />
+                ) : (
+                  <img
+                    src={"/assets/icons/delete.svg"}
+                    alt="trash can icon"
+                    width={20}
+                    height={20}
+                  />
+                )}
               </Button>
             </div>
           ) : null}

@@ -2,7 +2,7 @@ import { formatCount } from "@/lib/utils";
 import { useCreatedPosts } from "../posts/useCreatedPosts";
 
 function ProfileStats() {
-  const { data, isFetching } = useCreatedPosts();
+  const { data } = useCreatedPosts();
 
   return (
     <div className="flex justify-center gap-4 xl:justify-start">

@@ -32,7 +32,7 @@ function SigninForm() {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof SigninValidation>) {
-    const user = await signin(values, {
+    await signin(values, {
       onSuccess: () => {
         toast({
           description: "Account successfully logged in",

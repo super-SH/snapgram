@@ -34,7 +34,7 @@ function SignupForm() {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof SignupValidation>) {
-    const newUser = await signup(values, {
+    await signup(values, {
       onSuccess: () => {
         toast({
           description: "Account successfully created",
@@ -50,7 +50,6 @@ function SignupForm() {
         form.reset();
       },
     });
-
   }
 
   return (

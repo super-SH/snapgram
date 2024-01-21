@@ -1,5 +1,4 @@
 import EditFormContainer from "@/features/accounts/EditFormContainer";
-import EditProfileForm from "@/features/accounts/EditProfileForm";
 
 function EditProfile() {
   return (

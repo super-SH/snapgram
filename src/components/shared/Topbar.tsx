@@ -16,6 +16,7 @@ function Topbar() {
             variant="ghost"
             className="shad-button_ghost"
             onClick={() => signout()}
+            disabled={isSigningOut}
           >
             <img src="/assets/icons/logout.svg" alt="logout icon" />
           </Button>

@@ -4,10 +4,11 @@ import { Link, NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useSignout } from "@/features/authentication/useSignout";
 import { useAccountInfo } from "@/features/accounts/useAccountInfo";
+import { Loader } from ".";
 
 function LeftSidebar() {
   const { signout, isPending: isSigningout } = useSignout();
-  const { data, isFetching } = useAccountInfo();
+  const { data, isFetching: isFetchingAccount } = useAccountInfo();
 
   return (
     <nav className="leftsidebar">
@@ -16,22 +17,26 @@ function LeftSidebar() {
           <img src="/assets/images/logo.svg" alt="logo of snapgram" />
         </Link>
 
-        <Link to={`/profile/${data?.id}`} className="flex items-center gap-3">
-          <img
-            className="h-12 w-12 rounded-full object-cover  object-center"
-            src={
-              data?.profileUrl
-                ? data.profileUrl
-                : `/assets/icons/profile-placeholder.svg`
-            }
-            alt="profile"
-          />
+        {isFetchingAccount ? (
+          <Loader />
+        ) : (
+          <Link to={`/profile/${data?.id}`} className="flex items-center gap-3">
+            <img
+              className="h-12 w-12 rounded-full object-cover  object-center"
+              src={
+                data?.profileUrl
+                  ? data.profileUrl
+                  : `/assets/icons/profile-placeholder.svg`
+              }
+              alt="profile"
+            />
 
-          <div className="flex flex-col">
-            <p className="body-bold">{data?.name}</p>
-            <p className="small-regular text-light-3">@{data?.username}</p>
-          </div>
-        </Link>
+            <div className="flex flex-col">
+              <p className="body-bold">{data?.name}</p>
+              <p className="small-regular text-light-3">@{data?.username}</p>
+            </div>
+          </Link>
+        )}
 
         <ul className="flex flex-col gap-2 lg:gap-3">
           {sidebarLinks.map((link: INavLink) => (

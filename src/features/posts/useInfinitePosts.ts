@@ -7,7 +7,7 @@ export function useInfinitePosts() {
     queryKey: ["posts"],
     queryFn: ({ pageParam }) => getPosts(pageParam),
     initialPageParam: 0,
-    getNextPageParam: (lastPage, allPages, lastPageParam, allPageParams) => {
+    getNextPageParam: (lastPage, _, lastPageParam) => {
       if (lastPage && lastPage.length < POSTS_PER_QUERY) return null;
 
       return lastPageParam + 1;

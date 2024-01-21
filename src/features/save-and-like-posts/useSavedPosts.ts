@@ -1,5 +1,4 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useAccountInfo } from "../accounts/useAccountInfo";
 import { getSavedPostOfCurrentAccount } from "@/services/apiSavePost";
 import { AccountType } from "@/types/collection";
 

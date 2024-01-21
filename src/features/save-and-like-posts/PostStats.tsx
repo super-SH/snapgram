@@ -5,7 +5,6 @@ import { useSavePost } from "./useSavePost";
 import { useAccountInfo } from "../accounts/useAccountInfo";
 import { useRemoveSavedPost } from "./useRemoveSavedPost";
 import { Loader } from "@/components/shared";
-import { useLikedPosts } from "./useLikedPosts";
 import { useLikePost } from "./useLikePost";
 import { useUnlikePost } from "./useUnlikePost";
 import { useLikesCount } from "./useLikesCount";
@@ -46,7 +45,7 @@ function PostStats({ post }: PostStatsProps) {
   const { data: savedPostsRecord } = useSavedPostsRecord();
   const { data: likedPostsRecord } = useLikedPostsRecord();
 
-  const { data: accountData, isFetching } = useAccountInfo();
+  const { data: accountData } = useAccountInfo();
 
   const { savePost, isPending: isSavingPost } = useSavePost();
   const { removeSavedPost, isPending: isRemovingSavedPost } =

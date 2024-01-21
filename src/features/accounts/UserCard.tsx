@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { AccountType } from "@/types/collection";
 import { Link } from "react-router-dom";
 import FollowButton from "./FollowButton";
