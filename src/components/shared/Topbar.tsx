@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useSignout } from "@/features/authentication/useSignout";
+import { useAccountInfo } from "@/features/accounts/useAccountInfo";
 
 function Topbar() {
   const { signout, isPending: isSigningOut } = useSignout();
+  const { data } = useAccountInfo();
 
   return (
     <section className="topbar">
@@ -20,10 +22,14 @@ function Topbar() {
           >
             <img src="/assets/icons/logout.svg" alt="logout icon" />
           </Button>
-          <Link to={`/profile/:id`}>
+          <Link to={`/profile/${data?.id}`}>
             <img
               className="h-8 w-8 rounded-full"
-              src="/assets/icons/profile-placeholder.svg"
+              src={
+                data?.profileUrl
+                  ? data.profileUrl
+                  : "/assets/icons/profile-placeholder.svg"
+              }
               alt="profile"
             />
           </Link>
