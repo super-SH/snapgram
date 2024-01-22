@@ -1,7 +1,7 @@
 import { Loader } from "@/components/shared";
 import { useAccountInfoById } from "./useAccountInfoById";
 import { useAccountInfo } from "./useAccountInfo";
-import FollowButton from "./FollowButton";
+import FollowButton from "../follow/FollowButton";
 import EditProfileButton from "./EditProfileButton";
 import ProfileStats from "./ProfileStats";
 
@@ -10,7 +10,7 @@ function AccountDetails() {
   const { data: currentlyLoggedAccount, isFetching: isFetchingCurrent } =
     useAccountInfo();
 
-  if (isFetching || isFetchingCurrent)
+  if (isFetching || isFetchingCurrent || !data)
     return (
       <div className="flex-center h-full w-full">
         <Loader />
@@ -41,7 +41,11 @@ function AccountDetails() {
               @{data?.username}
             </p>
           </div>
-          {isCurrentUserProfile ? <EditProfileButton /> : <FollowButton />}
+          {isCurrentUserProfile ? (
+            <EditProfileButton />
+          ) : (
+            <FollowButton followToId={data?.id} />
+          )}
         </div>
 
         <ProfileStats />

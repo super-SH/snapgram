@@ -45,6 +45,42 @@ export interface Database {
         }
         Relationships: []
       }
+      Follows: {
+        Row: {
+          created_at: string
+          followedById: number | null
+          followToId: number | null
+          id: number
+        }
+        Insert: {
+          created_at?: string
+          followedById?: number | null
+          followToId?: number | null
+          id?: number
+        }
+        Update: {
+          created_at?: string
+          followedById?: number | null
+          followToId?: number | null
+          id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "Follows_followedById_fkey"
+            columns: ["followedById"]
+            isOneToOne: false
+            referencedRelation: "Accounts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "Follows_followToId_fkey"
+            columns: ["followToId"]
+            isOneToOne: false
+            referencedRelation: "Accounts"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       Likes: {
         Row: {
           accountId: number | null

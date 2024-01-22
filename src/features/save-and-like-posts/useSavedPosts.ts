@@ -11,6 +11,7 @@ export function useSavedPosts() {
   const { data, isFetching, error } = useQuery({
     queryKey: ["saved-posts", accountId],
     queryFn: () => getSavedPostOfCurrentAccount(accountId),
+    enabled: !!accountId,
   });
 
   return { data, isFetching, error };

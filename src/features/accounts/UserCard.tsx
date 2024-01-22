@@ -1,6 +1,6 @@
 import { AccountType } from "@/types/collection";
 import { Link } from "react-router-dom";
-import FollowButton from "./FollowButton";
+import FollowButton from "../follow/FollowButton";
 
 type UserCardProps = {
   account: AccountType;
@@ -29,7 +29,7 @@ function UserCard({ account, showFollowerCounts = false }: UserCardProps) {
           </p>
         </div>
 
-        <FollowButton />
+        <FollowButton followToId={account.id} />
       </Link>
     </li>
   );
