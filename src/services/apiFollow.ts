@@ -1,6 +1,8 @@
 import { supabase } from "./supabase";
 
 export async function followAccount(followToId: number, followedById: number) {
+  if(followToId === followedById) throw new Error('You cant follow yourself')
+
   const { data, error } = await supabase
     .from("Follows")
     .insert([{ followToId, followedById }])

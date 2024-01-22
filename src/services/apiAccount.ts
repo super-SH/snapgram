@@ -30,8 +30,14 @@ export async function getAccount(accountId?: number) {
   return account;
 }
 
-export async function getAccounts() {
-  const { data, error } = await supabase.from("Accounts").select("*").limit(20);
+export async function getAccounts(currentAccountId?: number) {
+  if (!currentAccountId) throw new Error("Account could not be loaded");
+
+  const { data, error } = await supabase
+    .from("Accounts")
+    .select("*")
+    .neq("id", currentAccountId)
+    .limit(20);
 
   if (error) {
     console.log(error);
