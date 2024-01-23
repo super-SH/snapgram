@@ -10,7 +10,7 @@ type UserCardProps = {
 };
 
 function UserCard({ account, showFollowerCounts = false }: UserCardProps) {
-  const { data } = useFollowers(account.id);
+  const { data: { count: followingsCounts } = {} } = useFollowers(account.id);
 
   return (
     <li>
@@ -27,8 +27,8 @@ function UserCard({ account, showFollowerCounts = false }: UserCardProps) {
         <div className="flex flex-col items-center justify-center gap-1">
           <p className="small-medium text-light-2">{account.name}</p>
           <p className="subtle-semibold text-light-4">
-            {showFollowerCounts && data?.count
-              ? `Followed by ${formatCount(data.count)} users`
+            {showFollowerCounts && followingsCounts
+              ? `Followed by ${formatCount(followingsCounts)} users`
               : `@${account.username}`}
           </p>
         </div>
