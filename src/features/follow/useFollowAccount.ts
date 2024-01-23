@@ -15,10 +15,17 @@ export function useFollowAccount() {
       followedById: number;
       followToId: number;
     }) => followAccount(followToId, followedById),
-    onSuccess: (data) =>
+    onSuccess: (data) => {
       queryClient.invalidateQueries({
         queryKey: ["followings-record", data.followedById],
-      }),
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["followings"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["followers"],
+      });
+    },
   });
 
   return { mutate, isPending };

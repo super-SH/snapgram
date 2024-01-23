@@ -48,7 +48,7 @@ function AccountDetails() {
           )}
         </div>
 
-        <ProfileStats />
+        <ProfileStats visitedAccountId={data.id} />
 
         <p className="text-center xl:text-start ">{data?.bio}</p>
       </div>

@@ -1,6 +1,8 @@
 import { AccountType } from "@/types/collection";
 import { Link } from "react-router-dom";
 import FollowButton from "../follow/FollowButton";
+import { useFollowers } from "../follow/useFollowers";
+import { formatCount } from "@/lib/utils";
 
 type UserCardProps = {
   account: AccountType;
@@ -8,6 +10,8 @@ type UserCardProps = {
 };
 
 function UserCard({ account, showFollowerCounts = false }: UserCardProps) {
+  const { data } = useFollowers(account.id);
+
   return (
     <li>
       <Link to={`/profile/${account.id}`} className="user-card">
@@ -23,8 +27,8 @@ function UserCard({ account, showFollowerCounts = false }: UserCardProps) {
         <div className="flex flex-col items-center justify-center gap-1">
           <p className="small-medium text-light-2">{account.name}</p>
           <p className="subtle-semibold text-light-4">
-            {showFollowerCounts
-              ? "Followed by 0 users"
+            {showFollowerCounts && data?.count
+              ? `Followed by ${formatCount(data.count)} users`
               : `@${account.username}`}
           </p>
         </div>

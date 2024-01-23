@@ -10,10 +10,17 @@ export function useUnfollowAccount() {
 
   const { mutate, isPending } = useMutation({
     mutationFn: (followsRecordId: number) => unfollowAccount(followsRecordId),
-    onSuccess: () =>
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["followings-record", accountId],
-      }),
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["followings"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["followers"],
+      });
+    },
   });
 
   return { mutate, isPending };

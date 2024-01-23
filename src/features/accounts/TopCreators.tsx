@@ -13,7 +13,7 @@ function TopCreators() {
 
   return (
     <>
-      <UserCardsContainer accounts={data || []} />
+      <UserCardsContainer accounts={data || []} showFollowerCounts />
     </>
   );
 }
