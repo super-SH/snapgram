@@ -41,7 +41,7 @@ function DeletePostButton({ onDelete, isDeleting }: DeletePostButtonProps) {
               server. Click confirm to delete post.
             </DialogDescription>
           </DialogHeader>
-          <DialogFooter>
+          <DialogFooter className="gap-2">
             <DialogClose asChild>
               <Button
                 type="button"

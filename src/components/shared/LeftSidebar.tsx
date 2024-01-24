@@ -1,12 +1,10 @@
 import { sidebarLinks } from "@/constants";
 import { INavLink } from "@/types";
 import { Link, NavLink } from "react-router-dom";
-import { Button } from "../ui/button";
-import { useSignout } from "@/features/authentication/useSignout";
 import { useAccountInfo } from "@/features/accounts/useAccountInfo";
+import SignoutButton from "@/features/authentication/SignoutButton";
 
 function LeftSidebar() {
-  const { signout, isPending: isSigningout } = useSignout();
   const { data } = useAccountInfo();
 
   return (
@@ -52,15 +50,7 @@ function LeftSidebar() {
         </ul>
       </div>
 
-      <Button
-        variant="ghost"
-        className="shad-button_ghost"
-        onClick={() => signout()}
-        disabled={isSigningout}
-      >
-        <img src="/assets/icons/logout.svg" alt="logout icon" />
-        <p className="small-medium lg:base-medium">Sign out</p>
-      </Button>
+      <SignoutButton text />
     </nav>
   );
 }
