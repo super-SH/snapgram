@@ -15,7 +15,7 @@ function PostCreatorDetails({
 }: CreatorDetailsProps) {
   return (
     <div className="flex items-center gap-3">
-      <Link to={`profile/${creator.id}`}>
+      <Link to={`/profile/${creator.id}`}>
         <img
           src={
             creator.profileUrl
