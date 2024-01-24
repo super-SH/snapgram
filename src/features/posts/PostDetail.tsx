@@ -3,11 +3,11 @@ import PostCreatorDetails from "./PostCreatorDetails";
 import { usePost } from "./usePost";
 import EditPostButton from "./EditPostButton";
 import { useAccountInfo } from "../accounts/useAccountInfo";
-import { Button } from "@/components/ui/button";
 import { useDeletePost } from "./useDeletePost";
 import { useToast } from "@/components/ui/use-toast";
 import PostStats from "../save-and-like-posts/PostStats";
 import { Loader } from "@/components/shared";
+import DeletePostButton from "./DeletePostButton";
 
 function PostDetail() {
   const { data: post, isFetching } = usePost();
@@ -30,6 +30,7 @@ function PostDetail() {
   const isCreator = accountData?.accountId === post?.creator.accountId;
 
   const handleDeletePost = () => {
+    console.log("del");
     deletePost(
       { postId: post.id, imageUrl: post.imageUrl || "" },
       {
@@ -64,23 +65,10 @@ function PostDetail() {
                 postId={post.id}
                 creatorId={post.creator.accountId}
               />
-              <Button
-                onClick={handleDeletePost}
-                variant="ghost"
-                className={`ghost_details-delete_btn`}
-                disabled={isDeleting}
-              >
-                {isDeleting ? (
-                  <Loader />
-                ) : (
-                  <img
-                    src={"/assets/icons/delete.svg"}
-                    alt="trash can icon"
-                    width={20}
-                    height={20}
-                  />
-                )}
-              </Button>
+              <DeletePostButton
+                onDelete={handleDeletePost}
+                isDeleting={isDeleting}
+              />
             </div>
           ) : null}
         </div>
