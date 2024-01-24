@@ -14,14 +14,14 @@ export async function signup({ username, name, email, password }: INewUser) {
   }
 
   // Create a row in Users Table
-  const { error } = await supabase
+  const { data: account, error } = await supabase
     .from("Accounts")
     .insert([{ email, name, username, accountId }])
     .select();
 
   if (error) throw new Error(error.message);
 
-  return data;
+  return { data, account };
 }
 
 export async function signin({
@@ -31,14 +31,23 @@ export async function signin({
   email: string;
   password: string;
 }) {
-  const { data, error } = await supabase.auth.signInWithPassword({
+  const { data, error: errorAuth } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
 
+  if (errorAuth) throw new Error(errorAuth.message);
+
+  // Create a row in Users Table
+  const { data: account, error } = await supabase
+    .from("Accounts")
+    .select("*")
+    .eq("accountId", data.user.id)
+    .single();
+
   if (error) throw new Error(error.message);
 
-  return data;
+  return { data, account };
 }
 
 export async function getCurrentUser() {

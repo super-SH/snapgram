@@ -12,7 +12,8 @@ export function useSignup() {
   } = useMutation({
     mutationFn: (newUser: INewUser) => signupApi(newUser),
     onSuccess: (data) => {
-      queryClient.setQueryData(["user"], data.user);
+      queryClient.setQueryData(["user"], data.data.user);
+      queryClient.setQueryData(["account"], data.account);
     },
   });
 

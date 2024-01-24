@@ -11,7 +11,8 @@ export function useSignin() {
   } = useMutation({
     mutationFn: (user: { email: string; password: string }) => signinApi(user),
     onSuccess: (data) => {
-      queryClient.setQueryData(["user"], data.user);
+      queryClient.setQueryData(["user"], data.data.user);
+      queryClient.setQueryData(["account"], data.account);
     },
   });
 
