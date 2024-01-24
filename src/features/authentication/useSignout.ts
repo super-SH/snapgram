@@ -12,7 +12,7 @@ export function useSignout() {
     mutationFn: signoutApi,
 
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user"] });
+      queryClient.invalidateQueries();
     },
   });
 
