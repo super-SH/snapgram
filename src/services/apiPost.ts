@@ -42,22 +42,6 @@ export async function createPost(post: INewPost) {
   return data;
 }
 
-export async function getRecentPosts() {
-  const { data, error } = await supabase
-    .from("Posts")
-    .select("* , creator(*)")
-    .order("created_at", { ascending: false })
-    .limit(20)
-    .returns<PostWithCreator[]>();
-
-  if (error) {
-    console.error(error);
-    throw new Error("Posts could not be loaded");
-  }
-
-  return data;
-}
-
 export async function getPosts(pageParam: number) {
   const firstPostIndex = pageParam * POSTS_PER_QUERY;
   const lastPostIndex = (pageParam + 1) * POSTS_PER_QUERY - 1;
