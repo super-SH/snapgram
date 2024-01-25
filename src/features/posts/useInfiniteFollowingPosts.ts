@@ -34,7 +34,7 @@ export function useInfiniteFollowingPosts() {
 
       return lastPageParam + 1;
     },
-    enabled: !!accountId && followings?.length !== 0,
+    enabled: !!accountId && followings.length !== 0,
   });
 
   return { data, fetchNextPage, hasNextPage, isFetching };

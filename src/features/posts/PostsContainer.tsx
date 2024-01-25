@@ -39,7 +39,9 @@ function PostsContainer() {
       </div>
     );
 
-  if (!data?.pages && !hasNextPage && !isFetchingPosts)
+  const posts = flattenPagesData(data?.pages || []);
+
+  if (posts.length === 0 && !hasNextPage && !isFetchingPosts)
     return (
       <div className="flex-center h-full w-full flex-col items-center gap-4">
         <p className="text-light-4 ">
@@ -53,8 +55,6 @@ function PostsContainer() {
         </Button>
       </div>
     );
-
-  const posts = flattenPagesData(data?.pages || []);
 
   return (
     <>

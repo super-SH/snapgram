@@ -16,8 +16,8 @@ export async function getAccount(accountId?: number) {
 
   const { data, error } = await supabase.auth.getUser();
 
-  if (!data) return null;
   if (error) throw new Error(error.message);
+  if (!data) return null;
 
   const { data: account, error: errorAccount } = await supabase
     .from("Accounts")

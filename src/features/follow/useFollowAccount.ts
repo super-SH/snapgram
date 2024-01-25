@@ -20,6 +20,9 @@ export function useFollowAccount() {
         queryKey: ["followings-record", data.followedById],
       });
       queryClient.invalidateQueries({
+        queryKey: ["following-posts", data.followedById],
+      });
+      queryClient.invalidateQueries({
         queryKey: ["followings"],
       });
       queryClient.invalidateQueries({

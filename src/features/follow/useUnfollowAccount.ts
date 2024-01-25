@@ -15,6 +15,9 @@ export function useUnfollowAccount() {
         queryKey: ["followings-record", accountId],
       });
       queryClient.invalidateQueries({
+        queryKey: ["following-posts", accountId],
+      });
+      queryClient.invalidateQueries({
         queryKey: ["followings"],
       });
       queryClient.invalidateQueries({
