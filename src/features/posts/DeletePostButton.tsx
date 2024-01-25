@@ -37,8 +37,8 @@ function DeletePostButton({ onDelete, isDeleting }: DeletePostButtonProps) {
           <DialogHeader className="flex gap-4">
             <DialogTitle className="text-[#b91c1c]">Delete Post</DialogTitle>
             <DialogDescription>
-              This action cannot be undone. This will permanently from the
-              server. Click confirm to delete post.
+              This action cannot be undone. This will permanently remove from
+              the server. Click confirm to delete post.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="gap-2">
