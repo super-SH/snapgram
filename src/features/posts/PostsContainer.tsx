@@ -32,7 +32,7 @@ function PostsContainer() {
     [inView, fetchNextPage],
   );
 
-  if (isFetchingPosts)
+  if (isFetchingPosts && !data)
     return (
       <div className="flex-center h-full w-full">
         <Loader />
