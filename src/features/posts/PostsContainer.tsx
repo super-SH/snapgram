@@ -1,13 +1,23 @@
 import { Loader } from "@/components/shared";
 import PostCard from "./PostCard";
-import { useInfinitePosts } from "./useInfinitePosts";
 import { useInView } from "react-intersection-observer";
 import { flattenPagesData } from "@/lib/utils";
 import { useEffect } from "react";
+import { useInfiniteFollowingPosts } from "./useInfiniteFollowingPosts";
+import { useAccountInfo } from "../accounts/useAccountInfo";
+import { useFollowingsRecord } from "../follow/useFollowingsRecord";
 
 function PostsContainer() {
+  const {} = useAccountInfo();
+  const {} = useFollowingsRecord();
+
   const { inView, ref } = useInView();
-  const { data, fetchNextPage, hasNextPage } = useInfinitePosts();
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetching: isFetchingPosts,
+  } = useInfiniteFollowingPosts();
 
   useEffect(
     function () {
@@ -18,14 +28,21 @@ function PostsContainer() {
     [inView, fetchNextPage],
   );
 
-  if (!data?.pages)
+  if (isFetchingPosts)
     return (
       <div className="flex-center h-full w-full">
         <Loader />
       </div>
     );
 
-  const posts = flattenPagesData(data?.pages);
+  if (!data?.pages && !hasNextPage && !isFetchingPosts)
+    return (
+      <div className="flex-center h-full w-full">
+        <p>No Posts yet. Follow more people to get better experience</p>
+      </div>
+    );
+
+  const posts = flattenPagesData(data?.pages || []);
 
   return (
     <>
