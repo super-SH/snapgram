@@ -6,10 +6,14 @@ import { useEffect } from "react";
 import { useInfiniteFollowingPosts } from "./useInfiniteFollowingPosts";
 import { useAccountInfo } from "../accounts/useAccountInfo";
 import { useFollowingsRecord } from "../follow/useFollowingsRecord";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 function PostsContainer() {
   const {} = useAccountInfo();
   const {} = useFollowingsRecord();
+
+  const navigate = useNavigate();
 
   const { inView, ref } = useInView();
   const {
@@ -37,8 +41,16 @@ function PostsContainer() {
 
   if (!data?.pages && !hasNextPage && !isFetchingPosts)
     return (
-      <div className="flex-center h-full w-full">
-        <p>No Posts yet. Follow more people to get better experience</p>
+      <div className="flex-center h-full w-full flex-col items-center gap-4">
+        <p className="text-light-4 ">
+          No Post yet. Follow more people to get better experience.
+        </p>
+        <Button
+          className="shad-button_primary"
+          onClick={() => navigate("/explore")}
+        >
+          Explore Posts
+        </Button>
       </div>
     );
 
