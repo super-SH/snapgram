@@ -45,6 +45,45 @@ export interface Database {
         }
         Relationships: []
       }
+      Comments: {
+        Row: {
+          authorId: number | null
+          commentText: string | null
+          created_at: string
+          id: number
+          postId: number | null
+        }
+        Insert: {
+          authorId?: number | null
+          commentText?: string | null
+          created_at?: string
+          id?: number
+          postId?: number | null
+        }
+        Update: {
+          authorId?: number | null
+          commentText?: string | null
+          created_at?: string
+          id?: number
+          postId?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "Comments_authorId_fkey"
+            columns: ["authorId"]
+            isOneToOne: false
+            referencedRelation: "Accounts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "Comments_postId_fkey"
+            columns: ["postId"]
+            isOneToOne: false
+            referencedRelation: "Posts"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       Follows: {
         Row: {
           created_at: string
