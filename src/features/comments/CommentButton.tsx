@@ -1,6 +1,13 @@
 import { formatCount } from "@/lib/utils";
+import { useAllCommentsAndCountByPostId } from "./useAllCommentsAndCountByPostId";
 
-function CommentButton() {
+type CommentBtnProps = {
+  postId: number;
+};
+
+function CommentButton({ postId }: CommentBtnProps) {
+  const { data } = useAllCommentsAndCountByPostId(postId);
+
   return (
     <div className="flex h-5 items-center gap-2" role="button">
       <svg
@@ -33,7 +40,9 @@ function CommentButton() {
           strokeLinecap="round"
         />
       </svg>
-      <p className="small-medium lg:base-medium">{formatCount(0)}</p>
+      <p className="small-medium lg:base-medium">
+        {formatCount(data?.count || 0)}
+      </p>
     </div>
   );
 }

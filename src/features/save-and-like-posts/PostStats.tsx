@@ -16,7 +16,7 @@ function PostStats({ post, showCommentBtn = false }: PostStatsProps) {
         {accountId && (
           <>
             <LikeButton postId={post.id} accountId={accountId} />
-            {showCommentBtn && <CommentButton />}
+            {showCommentBtn && <CommentButton postId={post.id} />}
           </>
         )}
       </div>
