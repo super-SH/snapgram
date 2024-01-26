@@ -88,7 +88,7 @@ function PostDetail() {
           </ul>
         </div>
 
-        <PostCommentBox />
+        <PostCommentBox postId={post.id} />
 
         <div className="w-full">
           <PostStats post={post} showCommentBtn />

@@ -184,7 +184,7 @@
 
   /* Comment */
   .post_comment-box {
-    @apply custom-scrollbar flex w-full flex-1 basis-48 overflow-scroll;
+    @apply custom-scrollbar flex w-full flex-1 basis-48 flex-col gap-4 overflow-scroll;
   }
 
   /* Profile */
