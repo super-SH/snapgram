@@ -94,7 +94,9 @@ function PostDetail() {
           <PostStats post={post} showCommentBtn />
         </div>
 
-        {accountData && <CommentInput loggedAccountData={accountData} />}
+        {accountData && (
+          <CommentInput loggedAccountData={accountData} postId={post.id} />
+        )}
       </div>
     </div>
   );

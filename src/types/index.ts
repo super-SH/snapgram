@@ -36,3 +36,9 @@ export type IUpdateUser = {
   imageUrl?: string | null;
   file: File[];
 };
+
+export type INewComment = {
+  authorId: number;
+  postId: number;
+  commentText: string;
+};
