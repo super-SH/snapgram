@@ -3,7 +3,7 @@ import { CommentWithAuthor } from "@/types/collection";
 
 function PostCommentCard({ comment }: { comment: CommentWithAuthor }) {
   return (
-    <div className="flex w-full flex-1 items-center gap-2">
+    <div className="flex w-full flex-1 items-start gap-2">
       <img
         src={comment.authorId.profileUrl || ""}
         alt={comment.authorId.name || "profile"}
@@ -16,7 +16,7 @@ function PostCommentCard({ comment }: { comment: CommentWithAuthor }) {
           <p className="text-xs">{multiFormatDateString(comment.created_at)}</p>
         </div>
 
-        <p className="text-xs font-medium text-light-2">
+        <p className="break-all text-xs font-medium text-light-2">
           {comment.commentText}
         </p>
       </div>

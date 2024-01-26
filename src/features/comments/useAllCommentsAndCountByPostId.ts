@@ -7,5 +7,5 @@ export function useAllCommentsAndCountByPostId(postId: number) {
     queryFn: () => getAllCommentsAndCountByPostId(postId),
   });
 
-  return { data, isFetching };
+  return { data, isFetching, error };
 }

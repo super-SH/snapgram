@@ -23,7 +23,7 @@ function PostCard({ post }: PostCardProps) {
 
       <Link to={`posts/${post.id}`}>
         <div className="small-medium lg:base-medium py-3">
-          <p>{post.caption}</p>
+          <p className="break-all">{post.caption}</p>
           <ul className="mt-1 flex gap-1">
             {post.tags.map((tag) => (
               <li key={tag} className="text-light-3">

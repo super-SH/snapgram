@@ -78,7 +78,7 @@ function PostDetail() {
         <hr className="w-full border border-dark-4/80" />
 
         <div className="small-medium lg:base-regular flex w-full flex-1 flex-col">
-          <p>{post.caption}</p>
+          <p className="break-all">{post.caption}</p>
           <ul className="mt-2 flex gap-1">
             {post.tags?.map((tag: string, index: number) => (
               <li key={`${tag}${index}`} className="small-regular text-light-3">
