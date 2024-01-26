@@ -170,7 +170,7 @@
   }
 
   .post_details-img {
-    @apply h-80 rounded-t-[30px] bg-dark-1 object-cover p-5 lg:h-[480px] xl:w-[48%] xl:rounded-l-[24px] xl:rounded-tr-none;
+    @apply h-80 flex-shrink-0  rounded-t-[30px] bg-dark-1 object-cover p-5 sm:h-[412px] lg:h-[508px] xl:h-[520px] xl:w-[48%] xl:rounded-l-[24px] xl:rounded-tr-none;
   }
 
   .post_details-info {
@@ -179,6 +179,11 @@
 
   .post_details-delete_btn {
     @apply small-medium lg:base-medium flex gap-3 p-0  text-light-1 hover:bg-transparent hover:text-light-1;
+  }
+
+  /* Comment */
+  .post_comment-box {
+    @apply custom-scrollbar flex w-full flex-1 basis-60 overflow-scroll;
   }
 
   /* Profile */

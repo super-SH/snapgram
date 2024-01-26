@@ -8,6 +8,7 @@ import { useToast } from "@/components/ui/use-toast";
 import PostStats from "../save-and-like-posts/PostStats";
 import { Loader } from "@/components/shared";
 import DeletePostButton from "./DeletePostButton";
+import PostCommentBox from "../comments/PostCommentBox";
 
 function PostDetail() {
   const { data: post, isFetching } = usePost();
@@ -86,8 +87,10 @@ function PostDetail() {
           </ul>
         </div>
 
+        <PostCommentBox />
+
         <div className="w-full">
-          <PostStats post={post} showCommentBtn/>
+          <PostStats post={post} showCommentBtn />
         </div>
       </div>
     </div>
