@@ -6,7 +6,8 @@ export async function createComment(comment: INewComment) {
   const { data, error } = await supabase
     .from("Comments")
     .insert([comment])
-    .select();
+    .select()
+    .single();
 
   if (error) {
     console.error(error);
