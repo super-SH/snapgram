@@ -1,6 +1,5 @@
 import { Loader } from "@/components/shared";
 import { useAllCommentsAndCountByPostId } from "./useAllCommentsAndCountByPostId";
-import { date } from "zod";
 import PostCommentCard from "./PostCommentCard";
 
 function PostCommentBox({ postId }: { postId: number }) {
@@ -12,8 +11,6 @@ function PostCommentBox({ postId }: { postId: number }) {
         <Loader />
       </div>
     );
-
-  console.log(data);
 
   return (
     <div className="post_comment-box">
