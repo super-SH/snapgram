@@ -9,6 +9,7 @@ import PostStats from "../save-and-like-posts/PostStats";
 import { Loader } from "@/components/shared";
 import DeletePostButton from "./DeletePostButton";
 import PostCommentBox from "../comments/PostCommentBox";
+import CommentInput from "../comments/CommentInput";
 
 function PostDetail() {
   const { data: post, isFetching } = usePost();
@@ -92,6 +93,8 @@ function PostDetail() {
         <div className="w-full">
           <PostStats post={post} showCommentBtn />
         </div>
+
+        {accountData && <CommentInput loggedAccountData={accountData} />}
       </div>
     </div>
   );
