@@ -40,7 +40,7 @@ function PostCard({ post }: PostCardProps) {
         />
       </Link>
 
-      <PostStats post={post} />
+      <PostStats post={post} showCommentBtn />
     </li>
   );
 }

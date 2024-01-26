@@ -87,7 +87,7 @@ function PostDetail() {
         </div>
 
         <div className="w-full">
-          <PostStats post={post} />
+          <PostStats post={post} showCommentBtn/>
         </div>
       </div>
     </div>
