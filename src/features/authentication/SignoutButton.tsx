@@ -16,15 +16,11 @@ function SignoutButton({ text = false }: { text?: boolean }) {
 
   return (
     <Dialog>
-      <DialogTrigger>
-        <Button
-          variant="ghost"
-          className="shad-button_ghost"
-          disabled={isSigningOut}
-        >
+      <DialogTrigger disabled={isSigningOut}>
+        <div className="flex w-full items-center justify-start gap-4 px-3 py-2 md:mt-12 md:p-4">
           <img src="/assets/icons/logout.svg" alt="logout icon" />
           {text && <p className="small-medium lg:base-medium">Sign out</p>}
-        </Button>
+        </div>
       </DialogTrigger>
       <DialogContent className="max-w-60 rounded-lg bg-black xs:max-w-xs sm:max-w-xl">
         <DialogHeader className="flex gap-4">
