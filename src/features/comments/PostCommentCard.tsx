@@ -1,9 +1,18 @@
 import { multiFormatDateString } from "@/lib/utils";
-import { CommentWithAuthor } from "@/types/collection";
+import { AccountType, CommentWithAuthor } from "@/types/collection";
+import { useQueryClient } from "@tanstack/react-query";
+import CommentOperationsDropdown from "./CommentOperationsDropdown";
 
 function PostCommentCard({ comment }: { comment: CommentWithAuthor }) {
+  const queryClient = useQueryClient();
+
+  const account = queryClient.getQueryData<AccountType>(["account"]);
+  const accountId = account?.id;
+
+  const isAuthorOfComment = accountId === comment.authorId.id;
+
   return (
-    <div className="flex w-full flex-1 items-start gap-2">
+    <div className="flex w-full flex-1 items-start gap-2 px-3">
       <img
         src={comment.authorId.profileUrl || ""}
         alt={comment.authorId.name || "profile"}
@@ -20,6 +29,8 @@ function PostCommentCard({ comment }: { comment: CommentWithAuthor }) {
           {comment.commentText}
         </p>
       </div>
+
+      {isAuthorOfComment && <CommentOperationsDropdown />}
     </div>
   );
 }
