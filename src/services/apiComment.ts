@@ -1,7 +1,6 @@
 import { INewComment } from "@/types";
 import { supabase } from "./supabase";
 import { CommentWithAuthor } from "@/types/collection";
-import { number } from "zod";
 
 export async function createComment(comment: INewComment) {
   const { data, error } = await supabase
@@ -34,7 +33,8 @@ export async function editComment(commentId: number, commentText: string) {
   return data;
 }
 
-export async function getCommentById(commentId: number) {
+export async function getCommentById(commentId: number | null) {
+  if (!commentId) throw new Error("Comment could not be loaded");
   const { data, error } = await supabase
     .from("Comments")
     .select("*")
