@@ -30,7 +30,12 @@ function PostCommentCard({ comment }: { comment: CommentWithAuthor }) {
         </p>
       </div>
 
-      {isAuthorOfComment && <CommentOperationsDropdown />}
+      {isAuthorOfComment && comment.postId && (
+        <CommentOperationsDropdown
+          commentId={comment.id}
+          postId={comment.postId}
+        />
+      )}
     </div>
   );
 }

@@ -18,8 +18,28 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useDeleteComment } from "./useDeleteComment";
+import { useQueryClient } from "@tanstack/react-query";
 
-function CommentOperationsDropdown() {
+type CommentOperationProps = {
+  commentId: number;
+  postId: number;
+};
+
+function CommentOperationsDropdown({
+  commentId,
+  postId,
+}: CommentOperationProps) {
+  const queryClient = useQueryClient();
+  const { deleteComment, isPending: isDeletingComment } = useDeleteComment();
+
+  function handleDeleteComment() {
+    deleteComment(commentId, {
+      onSuccess: () =>
+        queryClient.invalidateQueries({ queryKey: ["post-comments", postId] }),
+    });
+  }
+
   return (
     <Dialog>
       <DropdownMenu>
@@ -86,7 +106,8 @@ function CommentOperationsDropdown() {
           <Button
             type="submit"
             className="bg-red hover:bg-red/90"
-            onClick={() => console.log("trigger")}
+            onClick={handleDeleteComment}
+            disabled={isDeletingComment}
           >
             Confirm
           </Button>
