@@ -36,7 +36,7 @@ function CommentInput({ loggedAccountData, postId }: CommentInputProps) {
       <img
         src={
           loggedAccountData.profileUrl ||
-          "/public/assets/icons/profile-placeholder.svg"
+          "/assets/icons/profile-placeholder.svg"
         }
         alt={loggedAccountData.name || "profile"}
         className="h-12 w-12 rounded-full  object-cover object-center"
