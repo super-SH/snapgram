@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui/button";
-
 function EditCommentButton() {
   return (
-    <Button className="flex w-full items-center justify-start gap-2 p-0">
+    <div
+      role="button"
+      className="flex w-full items-center justify-start gap-2 p-0"
+    >
       <svg
         width="18px"
         height="18px"
@@ -41,7 +42,7 @@ function EditCommentButton() {
         />
       </svg>
       Edit
-    </Button>
+    </div>
   );
 }
 
