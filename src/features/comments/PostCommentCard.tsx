@@ -3,7 +3,11 @@ import { AccountType, CommentWithAuthor } from "@/types/collection";
 import { useQueryClient } from "@tanstack/react-query";
 import CommentOperationsDropdown from "./CommentOperationsDropdown";
 
-function PostCommentCard({ comment }: { comment: CommentWithAuthor }) {
+type PostCommentCardProps = {
+  comment: CommentWithAuthor;
+};
+
+function PostCommentCard({ comment }: PostCommentCardProps) {
   const queryClient = useQueryClient();
 
   const account = queryClient.getQueryData<AccountType>(["account"]);

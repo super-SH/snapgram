@@ -2,7 +2,11 @@ import { Loader } from "@/components/shared";
 import { useAllCommentsAndCountByPostId } from "./useAllCommentsAndCountByPostId";
 import PostCommentCard from "./PostCommentCard";
 
-function PostCommentBox({ postId }: { postId: number }) {
+type PostCommentBoxProps = {
+  postId: number;
+};
+
+function PostCommentBox({ postId }: PostCommentBoxProps) {
   const { data, isFetching } = useAllCommentsAndCountByPostId(postId);
 
   if (isFetching)
