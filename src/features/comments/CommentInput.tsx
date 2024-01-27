@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AccountType } from "@/types/collection";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useCreateComment } from "./useCreateComment";
 import { Loader } from "@/components/shared";
+import { useEditCommentContext } from "@/contexts/EditCommentContext";
+import { useEditComment } from "./useEditComment";
+import { useEdtingComment } from "./useEditingComment";
 
 type CommentInputProps = {
   postId: number;
@@ -12,23 +15,49 @@ type CommentInputProps = {
 
 function CommentInput({ loggedAccountData, postId }: CommentInputProps) {
   const [commentInput, setCommentInput] = useState("");
+  const { editingCommentId, isEditingSession, setEditingCommentId } =
+    useEditCommentContext();
 
   const { createComment, isPending: isCreatingComment } = useCreateComment();
+  const { editComment, isPending: isEditingComment } = useEditComment();
+  const { data: editingCommentData, isFetching: isFetchingEdtingComment } =
+    useEdtingComment();
 
-  function handleCommentCreate(e: FormEvent<HTMLFormElement>) {
+  useEffect(
+    function () {
+      if (editingCommentData?.commentText)
+        setCommentInput(editingCommentData.commentText);
+    },
+    [editingCommentData],
+  );
+
+  function handleCommentCreateAndEdit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!commentInput) return;
 
-    const newComment = {
-      authorId: loggedAccountData.id,
-      postId,
-      commentText: commentInput,
-    };
-    createComment(newComment, {
-      onSettled: () => {
-        setCommentInput("");
-      },
-    });
+    if (isEditingSession && editingCommentId) {
+      const updateComment = {
+        commentText: commentInput,
+        commentId: editingCommentId,
+      };
+      editComment(updateComment, {
+        onSettled: () => {
+          setCommentInput("");
+          setEditingCommentId(null);
+        },
+      });
+    } else {
+      const newComment = {
+        authorId: loggedAccountData.id,
+        postId,
+        commentText: commentInput,
+      };
+      createComment(newComment, {
+        onSettled: () => {
+          setCommentInput("");
+        },
+      });
+    }
   }
 
   return (
@@ -42,17 +71,19 @@ function CommentInput({ loggedAccountData, postId }: CommentInputProps) {
         className="h-12 w-12 rounded-full  object-cover object-center"
       />
 
-      <form className="w-full" onSubmit={handleCommentCreate}>
+      <form className="w-full" onSubmit={handleCommentCreateAndEdit}>
         <div className="flex w-full items-center gap-1 rounded-lg bg-dark-4 px-4">
           <Input
             type="text"
-            placeholder="Write a comment..."
+            placeholder={
+              isFetchingEdtingComment ? "Loading..." : "Write a comment..."
+            }
             className="comment-input"
             value={commentInput}
             onChange={(e) => setCommentInput(e.target.value)}
           />
           <Button type="submit">
-            {isCreatingComment ? (
+            {isCreatingComment || isEditingComment ? (
               <Loader />
             ) : (
               <svg

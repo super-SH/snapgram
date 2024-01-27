@@ -42,3 +42,8 @@ export type INewComment = {
   postId: number;
   commentText: string;
 };
+
+export type IUpdateComment = {
+  commentId: number;
+  commentText: string;
+};

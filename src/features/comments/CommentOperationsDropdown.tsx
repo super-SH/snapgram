@@ -73,7 +73,7 @@ function CommentOperationsDropdown({
         <DropdownMenuContent className="w-28 bg-black md:w-36 lg:w-40 xl:w-52">
           <DropdownMenuGroup>
             <DropdownMenuItem className="hover:bg-light-4">
-              <EditCommentButton />
+              <EditCommentButton commentId={commentId} />
             </DropdownMenuItem>
 
             <DropdownMenuItem className="hover:bg-light-4">

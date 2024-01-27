@@ -23,7 +23,7 @@ function EditCommentProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-function useEditComment() {
+function useEditCommentContext() {
   const context = useContext(EditCommentContext);
 
   if (context === undefined)
@@ -32,4 +32,4 @@ function useEditComment() {
   return context;
 }
 
-export { EditCommentProvider, useEditComment };
+export { EditCommentProvider, useEditCommentContext };

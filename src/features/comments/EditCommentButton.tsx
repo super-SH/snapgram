@@ -1,8 +1,13 @@
-function EditCommentButton() {
+import { useEditCommentContext } from "@/contexts/EditCommentContext";
+
+function EditCommentButton({ commentId }: { commentId: number }) {
+  const { setEditingCommentId } = useEditCommentContext();
+
   return (
     <div
       role="button"
       className="flex w-full items-center justify-start gap-2 p-0"
+      onClick={() => setEditingCommentId(commentId)}
     >
       <svg
         width="18px"
