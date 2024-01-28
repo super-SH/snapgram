@@ -36,7 +36,7 @@ function NotificationCard({ notification }: NotiCardProps) {
             >
               {notification.triggerBy.name + " "}
             </Link>
-            likes your
+            liked your
             <Link
               className="small-semibild md:base-medium text-primary-500"
               to={`/posts/${notification.postId.id}`}
@@ -54,7 +54,7 @@ function NotificationCard({ notification }: NotiCardProps) {
             >
               {notification.triggerBy.name + " "}
             </Link>
-            comments on your
+            commented on your
             <Link
               className="small-semibild md:base-medium text-primary-500"
               to={`/posts/${notification.postId.id}`}

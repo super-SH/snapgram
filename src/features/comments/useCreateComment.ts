@@ -10,7 +10,13 @@ export function useCreateComment() {
     isPending,
     error,
   } = useMutation({
-    mutationFn: (newComment: INewComment) => createCommentApi(newComment),
+    mutationFn: ({
+      newComment,
+      postCreatorId,
+    }: {
+      newComment: INewComment;
+      postCreatorId: number;
+    }) => createCommentApi(newComment, postCreatorId),
     onSuccess: (data) => {
       queryClient.invalidateQueries({
         queryKey: ["post-comments", data.postId],

@@ -1,8 +1,12 @@
 import { INewComment } from "@/types";
 import { supabase } from "./supabase";
 import { CommentWithAuthor } from "@/types/collection";
+import { createNotification } from "./apiNotification";
 
-export async function createComment(comment: INewComment) {
+export async function createComment(
+  comment: INewComment,
+  postCreatorId: number,
+) {
   const { data, error } = await supabase
     .from("Comments")
     .insert([comment])
@@ -13,6 +17,13 @@ export async function createComment(comment: INewComment) {
     console.error(error);
     throw new Error("Comment could not be created");
   }
+
+  await createNotification({
+    type: "comment-post",
+    notifyTo: postCreatorId,
+    triggerBy: comment.authorId,
+    postId: comment.postId,
+  });
 
   return data;
 }

@@ -97,7 +97,11 @@ function PostDetail() {
           </div>
 
           {accountData && (
-            <CommentInput loggedAccountData={accountData} postId={post.id} />
+            <CommentInput
+              loggedAccountData={accountData}
+              postId={post.id}
+              postCreatorId={post.creator.id}
+            />
           )}
         </EditCommentProvider>
       </div>

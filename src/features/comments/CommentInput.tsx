@@ -11,9 +11,14 @@ import { useEdtingComment } from "./useEditingComment";
 type CommentInputProps = {
   postId: number;
   loggedAccountData: AccountType;
+  postCreatorId: number;
 };
 
-function CommentInput({ loggedAccountData, postId }: CommentInputProps) {
+function CommentInput({
+  loggedAccountData,
+  postId,
+  postCreatorId,
+}: CommentInputProps) {
   const [commentInput, setCommentInput] = useState("");
   const { editingCommentId, isEditingSession, setEditingCommentId } =
     useEditCommentContext();
@@ -52,11 +57,15 @@ function CommentInput({ loggedAccountData, postId }: CommentInputProps) {
         postId,
         commentText: commentInput,
       };
-      createComment(newComment, {
-        onSettled: () => {
-          setCommentInput("");
+
+      createComment(
+        { newComment, postCreatorId },
+        {
+          onSettled: () => {
+            setCommentInput("");
+          },
         },
-      });
+      );
     }
   }
 
