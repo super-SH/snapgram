@@ -17,7 +17,7 @@ function SignoutButton({ text = false }: { text?: boolean }) {
   return (
     <Dialog>
       <DialogTrigger disabled={isSigningOut}>
-        <div className="flex w-full items-center justify-start gap-4 px-3 py-2 md:mt-12 md:p-4">
+        <div className="flex w-full items-center justify-start sm:px-3 sm:py-2 md:mt-12 md:gap-4 md:p-4">
           <img src="/assets/icons/logout.svg" alt="logout icon" />
           {text && <p className="small-medium lg:base-medium">Sign out</p>}
         </div>

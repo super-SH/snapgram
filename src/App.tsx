@@ -7,6 +7,7 @@ import {
   EditProfile,
   Explore,
   Home,
+  Notifications,
   People,
   Post,
   Profile,
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
       {
         path: "/edit-profile/:accountId",
         element: <EditProfile />,
+      },
+      {
+        path: "/notifications",
+        element: <Notifications />,
       },
     ],
   },
