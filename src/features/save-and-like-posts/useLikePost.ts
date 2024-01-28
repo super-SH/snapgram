@@ -16,10 +16,12 @@ export function useLikePost() {
     mutationFn: ({
       accountId,
       postId,
+      creatorId,
     }: {
       accountId: number;
       postId: number;
-    }) => likePostApi(accountId, postId),
+      creatorId: number;
+    }) => likePostApi(accountId, postId, creatorId),
     onSuccess: (data) => {
       queryClient.invalidateQueries({
         queryKey: ["liked-posts-record", accountId],

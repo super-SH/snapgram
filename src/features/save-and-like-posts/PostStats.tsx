@@ -15,7 +15,11 @@ function PostStats({ post, showCommentBtn = false }: PostStatsProps) {
       <div className="flex gap-3">
         {accountId && (
           <>
-            <LikeButton postId={post.id} accountId={accountId} />
+            <LikeButton
+              postId={post.id}
+              accountId={accountId}
+              creatorId={post.creator.id}
+            />
             {showCommentBtn && <CommentButton postId={post.id} />}
           </>
         )}

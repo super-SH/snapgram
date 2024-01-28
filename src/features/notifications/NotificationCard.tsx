@@ -39,10 +39,10 @@ function NotificationCard({ notification }: NotiCardProps) {
             likes your
             <Link
               className="small-semibild md:base-medium text-primary-500"
-              to={`/post/${notification.postId}`}
+              to={`/posts/${notification.postId.id}`}
             >
               {" "}
-              post
+              post.
             </Link>
           </p>
         )}
@@ -57,10 +57,10 @@ function NotificationCard({ notification }: NotiCardProps) {
             comments on your
             <Link
               className="small-semibild md:base-medium text-primary-500"
-              to={`/post/${notification.postId}`}
+              to={`/posts/${notification.postId.id}`}
             >
               {" "}
-              post
+              post.
             </Link>
           </p>
         )}

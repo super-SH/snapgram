@@ -1,7 +1,12 @@
 import { LikedPost, PostWithCreator } from "@/types/collection";
 import { supabase } from "./supabase";
+import { createNotification } from "./apiNotification";
 
-export async function likePost(accountId: number, postId: number) {
+export async function likePost(
+  accountId: number,
+  postId: number,
+  creatorId: number,
+) {
   const { data, error } = await supabase
     .from("Likes")
     .insert([{ accountId, postId }])
@@ -12,6 +17,13 @@ export async function likePost(accountId: number, postId: number) {
     console.error(error);
     throw new Error("Error while liking a post");
   }
+
+  await createNotification({
+    type: "like-post",
+    notifyTo: creatorId,
+    triggerBy: accountId,
+    postId,
+  });
 
   return data;
 }

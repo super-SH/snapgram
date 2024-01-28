@@ -28,9 +28,10 @@ function getPostLikeStatus(
 type LikeBtnProps = {
   postId: number;
   accountId: number;
+  creatorId: number;
 };
 
-function LikeButton({ postId, accountId }: LikeBtnProps) {
+function LikeButton({ postId, accountId, creatorId }: LikeBtnProps) {
   const { data: likedPostsRecord } = useLikedPostsRecord();
 
   const { likePost, isPending: isLikingPost } = useLikePost();
@@ -47,7 +48,8 @@ function LikeButton({ postId, accountId }: LikeBtnProps) {
     if (!accountId) return;
 
     if (!isPostLiked) {
-      likePost({ accountId, postId });
+      // need to pass creatorId to make notification
+      likePost({ accountId, postId, creatorId });
     } else {
       if (!likedPostRecordId) return;
       unlikePost(likedPostRecordId);
