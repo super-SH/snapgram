@@ -1,5 +1,6 @@
 import { NotificationsType } from "@/types/supabase";
 import { supabase } from "./supabase";
+import { ExtendedNotification } from "@/types/collection";
 
 export async function createNotification({
   type,
@@ -14,7 +15,7 @@ export async function createNotification({
 }) {
   console.log({ type, triggerBy, notifyTo });
 
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from("Notifications")
     .insert([{ type, notifyTo, triggerBy, postId, isRead: false }])
     .select();
@@ -24,11 +25,15 @@ export async function createNotification({
   if (error) console.log(error);
 }
 
-export async function getAllNotificationsById(accountId: number) {
+export async function getAllNotificationsById(accountId?: number) {
+  if (!accountId) throw new Error("Notifications could not be loaded");
+
   const { data, error } = await supabase
     .from("Notifications")
-    .select("*")
-    .eq("notifyTo", accountId);
+    .select("*, triggerBy(*), postId(*)")
+    .order("created_at", { ascending: false })
+    .eq("notifyTo", accountId)
+    .returns<ExtendedNotification[]>();
 
   if (error) {
     console.log(error);
