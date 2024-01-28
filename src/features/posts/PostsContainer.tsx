@@ -47,12 +47,20 @@ function PostsContainer() {
         <p className="text-light-4 ">
           No Post yet. Follow more people to get better experience.
         </p>
-        <Button
-          className="shad-button_primary"
-          onClick={() => navigate("/explore")}
-        >
-          Explore Posts
-        </Button>
+        <div className="flex gap-2">
+          <Button
+            className="shad-button_primary"
+            onClick={() => navigate("/explore")}
+          >
+            Explore Posts
+          </Button>
+          <Button
+            className="shad-button_primary"
+            onClick={() => navigate("/all-accounts")}
+          >
+            Find Accounts
+          </Button>
+        </div>
       </div>
     );
 
