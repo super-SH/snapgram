@@ -1,4 +1,4 @@
-type NotificationsType = "like-post" | "comment-post" | "follow";
+export type NotificationsType = "like-post" | "comment-post" | "follow";
 
 export type Json =
   | string

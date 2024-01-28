@@ -1,3 +1,4 @@
+import { createNotification } from "./apiNotification";
 import { supabase } from "./supabase";
 
 export async function followAccount(followToId: number, followedById: number) {
@@ -13,6 +14,8 @@ export async function followAccount(followToId: number, followedById: number) {
     console.error(error);
     throw new Error("Error while following an account");
   }
+
+  await createNotification({type: 'follow' , notifyTo: followToId , triggerBy: followedById })
 
   return data;
 }
