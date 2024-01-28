@@ -130,7 +130,7 @@
 
   .explore-search,
   .comment-input {
-    @apply h-12 border-none bg-dark-4 ring-offset-0 placeholder:text-light-4 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+    @apply h-12 border-none bg-dark-4 px-0 ring-offset-0 placeholder:text-light-4 focus-visible:ring-0 focus-visible:ring-offset-0 md:px-2 !important;
   }
 
   /* Home */

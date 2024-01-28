@@ -61,18 +61,18 @@ function CommentInput({ loggedAccountData, postId }: CommentInputProps) {
   }
 
   return (
-    <div className="flex w-full gap-4">
+    <div className="flex w-full items-center gap-2 md:gap-4">
       <img
         src={
           loggedAccountData.profileUrl ||
           "/assets/icons/profile-placeholder.svg"
         }
         alt={loggedAccountData.name || "profile"}
-        className="h-12 w-12 rounded-full  object-cover object-center"
+        className="hidden h-8 w-8 rounded-full object-cover object-center sm:inline  md:h-12 md:w-12"
       />
 
       <form className="w-full" onSubmit={handleCommentCreateAndEdit}>
-        <div className="flex w-full items-center gap-1 rounded-lg bg-dark-4 px-4">
+        <div className="flex w-full items-center gap-1 rounded-lg bg-dark-4 px-2 sm:px-4 md:px-2 lg:px-5">
           <Input
             type="text"
             placeholder={
@@ -82,7 +82,7 @@ function CommentInput({ loggedAccountData, postId }: CommentInputProps) {
             value={commentInput}
             onChange={(e) => setCommentInput(e.target.value)}
           />
-          <Button type="submit">
+          <Button type="submit" className="px-0 sm:px-2 md:px-1 lg:px-3">
             {isCreatingComment || isEditingComment ? (
               <Loader />
             ) : (
