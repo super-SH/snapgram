@@ -60,6 +60,12 @@ function CommentInput({ loggedAccountData, postId }: CommentInputProps) {
     }
   }
 
+  function handleCancelEditing(e: React.MouseEvent<HTMLElement>) {
+    e.preventDefault();
+    setEditingCommentId(null);
+    setCommentInput("");
+  }
+
   return (
     <div className="flex w-full items-center gap-2 md:gap-4">
       <img
@@ -82,6 +88,35 @@ function CommentInput({ loggedAccountData, postId }: CommentInputProps) {
             value={commentInput}
             onChange={(e) => setCommentInput(e.target.value)}
           />
+          {isEditingSession && (
+            <Button
+              type="reset"
+              className="px-0 sm:px-2 md:px-1 lg:px-3"
+              onClick={handleCancelEditing}
+            >
+              <svg
+                width="18px"
+                height="18px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18.5 5.5L5.50002 18.4998"
+                  stroke="#FF5A5A"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="#FF5A5A"
+                  strokeWidth="1.5"
+                />
+              </svg>
+            </Button>
+          )}
           <Button type="submit" className="px-0 sm:px-2 md:px-1 lg:px-3">
             {isCreatingComment || isEditingComment ? (
               <Loader />
