@@ -17,8 +17,8 @@ function GridPostList({
 }: GridPostListProp) {
   if (posts.length === 0)
     return (
-      <div className="rounded-xl border border-dark-4 bg-dark-2 p-4 md:p-6 xl:p-8">
-        <p className="text-center text-base md:text-lg lg:text-2xl">
+      <div className="p-4 md:p-6 xl:p-8">
+        <p className="text-center text-base text-light-4 md:text-lg lg:text-2xl">
           {noPostMsg}
         </p>
       </div>
