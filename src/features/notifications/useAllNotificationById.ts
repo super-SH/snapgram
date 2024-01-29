@@ -1,11 +1,9 @@
 import { getAllNotificationsById } from "@/services/apiNotification";
-import { AccountType } from "@/types/collection";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
+import { useAccountInfo } from "../accounts/useAccountInfo";
 
 export function useAllNotificationById() {
-  const queryClient = useQueryClient();
-
-  const account = queryClient.getQueryData<AccountType>(["account"]);
+  const { data: account } = useAccountInfo();
   const accountId = account?.id;
 
   const { data, error, isFetching } = useQuery({

@@ -1,16 +1,11 @@
-import { Loader } from "@/components/shared";
 import { useAllNotificationById } from "./useAllNotificationById";
 import NotificationCard from "./NotificationCard";
+import { NotificationLoader } from "@/components/loaderSkeleton";
 
 function NotificationsContainer() {
   const { data, isFetching } = useAllNotificationById();
 
-  if (isFetching)
-    return (
-      <div className="flex-center h-full w-full">
-        <Loader />
-      </div>
-    );
+  if (isFetching) return <NotificationLoader />;
 
   if (data?.length === 0 && !isFetching)
     return (
@@ -18,8 +13,6 @@ function NotificationsContainer() {
         <p className="text-xl text-light-4 ">No notification</p>
       </div>
     );
-
-  console.log(data);
 
   return (
     <ul className="flex w-full max-w-5xl flex-col">
