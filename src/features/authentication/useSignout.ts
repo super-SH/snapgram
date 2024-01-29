@@ -13,6 +13,7 @@ export function useSignout() {
 
     onSuccess: () => {
       queryClient.invalidateQueries();
+      queryClient.clear();
     },
   });
 
