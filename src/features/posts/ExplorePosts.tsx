@@ -3,11 +3,11 @@ import { useInfinitePosts } from "./useInfinitePosts";
 import GridPostList from "../../components/shared/GridPostList";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
-import { Loader } from "@/components/shared";
 import SearchPostInput from "./SearchPostInput";
 import { useSearchPosts } from "./useSearchPosts";
 import { PostWithCreator } from "@/types/collection";
 import { useSearchParams } from "react-router-dom";
+import { GridPostCardSkeleton } from "@/components/loaderSkeleton";
 
 function ExplorePosts() {
   const [searchParams] = useSearchParams();
@@ -29,13 +29,15 @@ function ExplorePosts() {
 
   if (!data?.pages)
     return (
-      <div className="flex-center h-full w-full">
-        <Loader />
+      <div className="grid-container">
+        <GridPostCardSkeleton />
+        <GridPostCardSkeleton />
+        <GridPostCardSkeleton />
+        <GridPostCardSkeleton />
       </div>
     );
 
   const showExplorePosts = flattenPagesData(data?.pages);
-
 
   return (
     <>
@@ -69,8 +71,11 @@ function ExplorePosts() {
       </div>
 
       {!hasNextPage ? null : (
-        <div ref={ref} className="mt-12">
-          <Loader />
+        <div ref={ref} className="grid-container">
+          <GridPostCardSkeleton />
+          <GridPostCardSkeleton />
+          <GridPostCardSkeleton />
+          <GridPostCardSkeleton />
         </div>
       )}
     </>
@@ -84,7 +89,14 @@ type SearchResultProps = {
 
 function SearchResult({ isSearchFetching, searchPosts }: SearchResultProps) {
   if (isSearchFetching) {
-    return <Loader />;
+    return (
+      <div className="grid-container">
+        <GridPostCardSkeleton />
+        <GridPostCardSkeleton />
+        <GridPostCardSkeleton />
+        <GridPostCardSkeleton />
+      </div>
+    );
   } else if (searchPosts && searchPosts.length > 0) {
     return <GridPostList posts={searchPosts} />;
   } else {

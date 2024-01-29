@@ -1,6 +1,6 @@
-import { Loader } from "@/components/shared";
 import GridPostList from "../../components/shared/GridPostList";
 import { useSavedPosts } from "./useSavedPosts";
+import { GridPostCardSkeleton } from "@/components/loaderSkeleton";
 
 function SavedPostsContainer() {
   const { data: savedPosts, isFetching: isFetchingSavedPosts } =
@@ -8,8 +8,11 @@ function SavedPostsContainer() {
 
   if (isFetchingSavedPosts)
     return (
-      <div className="flex-center h-full w-full">
-        <Loader />
+      <div className="grid-container">
+        <GridPostCardSkeleton />
+        <GridPostCardSkeleton />
+        <GridPostCardSkeleton />
+        <GridPostCardSkeleton />
       </div>
     );
 

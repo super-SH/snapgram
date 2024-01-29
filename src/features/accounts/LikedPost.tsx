@@ -1,14 +1,17 @@
-import { Loader } from "@/components/shared";
 import { useLikedPosts } from "../save-and-like-posts/useLikedPosts";
 import GridPostList from "@/components/shared/GridPostList";
+import { GridPostCardSkeleton } from "@/components/loaderSkeleton";
 
 function LikedPost() {
   const { data, isFetching } = useLikedPosts();
 
   if (isFetching)
     return (
-      <div className="flex-center w-full">
-        <Loader />
+      <div className="grid-container">
+        <GridPostCardSkeleton />
+        <GridPostCardSkeleton />
+        <GridPostCardSkeleton />
+        <GridPostCardSkeleton />
       </div>
     );
 
