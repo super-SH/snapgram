@@ -6,7 +6,6 @@ import { useAccountInfo } from "../accounts/useAccountInfo";
 import { useDeletePost } from "./useDeletePost";
 import { useToast } from "@/components/ui/use-toast";
 import PostStats from "../save-and-like-posts/PostStats";
-import { Loader } from "@/components/shared";
 import DeletePostButton from "./DeletePostButton";
 import PostCommentBox from "../comments/PostCommentBox";
 import CommentInput from "../comments/CommentInput";
