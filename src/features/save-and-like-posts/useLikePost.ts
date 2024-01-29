@@ -1,11 +1,11 @@
 import { likePost as likePostApi } from "@/services/apiLikePost";
-import { AccountType } from "@/types/collection";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useAccountInfo } from "../accounts/useAccountInfo";
 
 export function useLikePost() {
   const queryClient = useQueryClient();
 
-  const account = queryClient.getQueryData<AccountType>(["account"]);
+  const { data: account } = useAccountInfo();
   const accountId = account?.id;
 
   const {
@@ -27,6 +27,7 @@ export function useLikePost() {
         queryKey: ["liked-posts-record", accountId],
       });
       queryClient.invalidateQueries({ queryKey: ["likes-count", data.postId] });
+      queryClient.invalidateQueries({ queryKey: ["liked-posts", accountId] });
     },
   });
 

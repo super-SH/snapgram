@@ -1,11 +1,9 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getSavedPostOfCurrentAccount } from "@/services/apiSavePost";
-import { AccountType } from "@/types/collection";
+import { useAccountInfo } from "../accounts/useAccountInfo";
 
 export function useSavedPosts() {
-  const queryClient = useQueryClient();
-
-  const account = queryClient.getQueryData<AccountType>(["account"]);
+  const { data: account } = useAccountInfo();
   const accountId = account?.id;
 
   const { data, isFetching, error } = useQuery({

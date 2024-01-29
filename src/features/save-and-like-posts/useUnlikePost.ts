@@ -1,11 +1,11 @@
 import { unlikePost as unlikePostApi } from "@/services/apiLikePost";
-import { AccountType } from "@/types/collection";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useAccountInfo } from "../accounts/useAccountInfo";
 
 export function useUnlikePost() {
   const queryClient = useQueryClient();
 
-  const account = queryClient.getQueryData<AccountType>(["account"]);
+  const { data: account } = useAccountInfo();
   const accountId = account?.id;
 
   const { mutate: unlikePost, isPending } = useMutation({
@@ -15,6 +15,7 @@ export function useUnlikePost() {
         queryKey: ["liked-posts-record", accountId],
       });
       queryClient.invalidateQueries({ queryKey: ["likes-count"] });
+      queryClient.invalidateQueries({ queryKey: ["liked-posts", accountId] });
     },
   });
 

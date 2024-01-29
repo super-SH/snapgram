@@ -1,11 +1,11 @@
 import { savePost as savePostApi } from "@/services/apiSavePost";
-import { AccountType } from "@/types/collection";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useAccountInfo } from "../accounts/useAccountInfo";
 
 export function useSavePost() {
   const queryClient = useQueryClient();
 
-  const account = queryClient.getQueryData<AccountType>(["account"]);
+  const { data: account } = useAccountInfo();
   const accountId = account?.id;
 
   const {
@@ -20,10 +20,14 @@ export function useSavePost() {
       accountId: number;
       postId: number;
     }) => savePostApi(accountId, postId),
-    onSuccess: () =>
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["saved-posts-record", accountId],
-      }),
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["saved-posts", accountId],
+      });
+    },
   });
 
   return { savePost, isPending, error };

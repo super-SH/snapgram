@@ -1,11 +1,11 @@
 import { removeSavedPost as removeSavedPostApi } from "@/services/apiSavePost";
-import { AccountType } from "@/types/collection";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useAccountInfo } from "../accounts/useAccountInfo";
 
 export function useRemoveSavedPost() {
   const queryClient = useQueryClient();
 
-  const account = queryClient.getQueryData<AccountType>(["account"]);
+  const { data: account } = useAccountInfo();
   const accountId = account?.id;
 
   const { mutate: removeSavedPost, isPending } = useMutation({
@@ -13,6 +13,9 @@ export function useRemoveSavedPost() {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["saved-posts-record", accountId],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["saved-posts", accountId],
       });
     },
   });

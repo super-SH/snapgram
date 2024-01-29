@@ -1,15 +1,13 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { AccountType } from "@/types/collection";
+import { useQuery } from "@tanstack/react-query";
 import { getLikedPosts } from "@/services/apiLikePost";
 import { useParams } from "react-router-dom";
+import { useAccountInfo } from "../accounts/useAccountInfo";
 
 export function useLikedPosts() {
-  const queryClient = useQueryClient();
-
   const { accountId } = useParams();
   const idOfVisitedUser = Number(accountId);
 
-  const account = queryClient.getQueryData<AccountType>(["account"]);
+  const { data: account } = useAccountInfo();
   const idOfLoggedUser = account?.id;
 
   const accountIdParams = idOfVisitedUser || idOfLoggedUser;
