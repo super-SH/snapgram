@@ -13,7 +13,8 @@ export async function createNotification({
   triggerBy: number;
   postId?: number;
 }) {
-  console.log({ type, triggerBy, notifyTo });
+  //  if notification is trigger by the own account , do nothing (dont create noti)
+  if (notifyTo === triggerBy) return;
 
   const { error } = await supabase
     .from("Notifications")
