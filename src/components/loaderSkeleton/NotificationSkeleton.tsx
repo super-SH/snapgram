@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
-function NotificationLoader() {
+function NotificationSkeleton() {
   return (
     <div className="flex w-full max-w-5xl flex-col">
       <div className="flex items-center gap-2 border-b border-dark-4 py-3 md:py-4 lg:py-5">
@@ -28,4 +28,4 @@ function NotificationLoader() {
   );
 }
 
-export default NotificationLoader;
+export default NotificationSkeleton;

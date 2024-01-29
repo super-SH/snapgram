@@ -1,20 +1,16 @@
 import { POSTS_PER_QUERY } from "@/constants";
 import { getFollowingPosts } from "@/services/apiPost";
-import { AccountType, FollowRecord } from "@/types/collection";
-import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useAccountInfo } from "../accounts/useAccountInfo";
+import { useFollowingsRecord } from "../follow/useFollowingsRecord";
 
 export function useInfiniteFollowingPosts() {
-  const queryClient = useQueryClient();
-
-  // Get logged accountId from cache
-  const account = queryClient.getQueryData<AccountType>(["account"]);
+  // Get logged accountId
+  const { data: account } = useAccountInfo();
   const accountId = account?.id;
 
   // get following accounts of currently log in account
-  const followingsData = queryClient.getQueryData<FollowRecord[]>([
-    "followings-record",
-    accountId,
-  ]);
+  const { data: followingsData } = useFollowingsRecord();
 
   // push all followtoId ,which is  followings of current account. + current acoountId
   // because user will also see their own posts

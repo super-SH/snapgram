@@ -1,11 +1,11 @@
 import { useAllNotificationById } from "./useAllNotificationById";
 import NotificationCard from "./NotificationCard";
-import { NotificationLoader } from "@/components/loaderSkeleton";
+import { NotificationSkeleton } from "@/components/loaderSkeleton";
 
 function NotificationsContainer() {
   const { data, isFetching } = useAllNotificationById();
 
-  if (isFetching) return <NotificationLoader />;
+  if (isFetching) return <NotificationSkeleton />;
 
   if (data?.length === 0 && !isFetching)
     return (

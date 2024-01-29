@@ -1,18 +1,13 @@
-import { Loader } from "@/components/shared";
 import PostCard from "./PostCard";
 import { useInView } from "react-intersection-observer";
 import { flattenPagesData } from "@/lib/utils";
 import { useEffect } from "react";
 import { useInfiniteFollowingPosts } from "./useInfiniteFollowingPosts";
-import { useAccountInfo } from "../accounts/useAccountInfo";
-import { useFollowingsRecord } from "../follow/useFollowingsRecord";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { HomePostCardSkeleton } from "@/components/loaderSkeleton";
 
 function PostsContainer() {
-  const {} = useAccountInfo();
-  const {} = useFollowingsRecord();
-
   const navigate = useNavigate();
 
   const { inView, ref } = useInView();
@@ -34,8 +29,10 @@ function PostsContainer() {
 
   if (isFetchingPosts && !data)
     return (
-      <div className="flex-center h-full w-full">
-        <Loader />
+      <div className="flex w-full flex-1 flex-col gap-8">
+        <HomePostCardSkeleton />
+        <HomePostCardSkeleton />
+        <HomePostCardSkeleton />
       </div>
     );
 
@@ -71,8 +68,10 @@ function PostsContainer() {
       </ul>
 
       {!hasNextPage ? null : (
-        <div ref={ref} className="mt-12">
-          <Loader />
+        <div ref={ref} className="flex w-full flex-1 flex-col gap-8">
+          <HomePostCardSkeleton />
+          <HomePostCardSkeleton />
+          <HomePostCardSkeleton />
         </div>
       )}
     </>
