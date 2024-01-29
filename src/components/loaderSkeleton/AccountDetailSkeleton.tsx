@@ -16,9 +16,9 @@ function AccountDetailSkeleton() {
         </div>
         <Skeleton className="h-14 w-48 self-center xl:self-start" />
         <div className="space-y-2 self-center xl:self-start">
-          <Skeleton className="h-3 w-96" />
-          <Skeleton className="h-3 w-96" />
-          <Skeleton className="h-3 w-52" />
+          <Skeleton className="h-3 w-36  sm:w-96" />
+          <Skeleton className="h-3 w-36 sm:w-96" />
+          <Skeleton className="h-3 w-12 sm:w-52" />
         </div>
       </div>
     </div>

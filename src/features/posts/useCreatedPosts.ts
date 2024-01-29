@@ -6,8 +6,9 @@ export function useCreatedPosts() {
   const { accountId } = useParams();
 
   const { data, isFetching } = useQuery({
-    queryKey: ["created-posts"],
+    queryKey: ["created-posts", accountId],
     queryFn: () => getCreatedPostsByAccountId(Number(accountId)),
+    enabled: !!accountId,
   });
 
   return { data, isFetching };
