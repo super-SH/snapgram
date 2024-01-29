@@ -11,6 +11,7 @@ import DeletePostButton from "./DeletePostButton";
 import PostCommentBox from "../comments/PostCommentBox";
 import CommentInput from "../comments/CommentInput";
 import { EditCommentProvider } from "@/contexts/EditCommentContext";
+import { PostDetailSkeleton } from "@/components/loaderSkeleton";
 
 function PostDetail() {
   const { data: post, isFetching } = usePost();
@@ -21,12 +22,7 @@ function PostDetail() {
 
   const navigate = useNavigate();
 
-  if (isFetching)
-    return (
-      <div className="flex-center h-full w-full">
-        <Loader />
-      </div>
-    );
+  if (isFetching) return <PostDetailSkeleton />;
 
   if (!post) return "error";
 
