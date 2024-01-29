@@ -5,3 +5,4 @@ export { default as UserCardSkeleton } from "./UserCardSkeleton";
 export { default as GridPostCardSkeleton } from "./GridPostCardSkeleton";
 export { default as AccountDetailSkeleton } from "./AccountDetailSkeleton";
 export { default as PostDetailSkeleton } from "./PostDetailSkeleton";
+export { default as PostCommentBoxSkeleton } from "./PostCommentBoxSkeleton";

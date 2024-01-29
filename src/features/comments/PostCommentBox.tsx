@@ -1,6 +1,6 @@
-import { Loader } from "@/components/shared";
 import { useAllCommentsAndCountByPostId } from "./useAllCommentsAndCountByPostId";
 import PostCommentCard from "./PostCommentCard";
+import { PostCommentBoxSkeleton } from "@/components/loaderSkeleton";
 
 type PostCommentBoxProps = {
   postId: number;
@@ -9,12 +9,7 @@ type PostCommentBoxProps = {
 function PostCommentBox({ postId }: PostCommentBoxProps) {
   const { data, isFetching } = useAllCommentsAndCountByPostId(postId);
 
-  if (isFetching)
-    return (
-      <div className="flex-center h-full w-full">
-        <Loader />
-      </div>
-    );
+  if (isFetching) return <PostCommentBoxSkeleton />;
 
   return (
     <div className="post_comment-box">
