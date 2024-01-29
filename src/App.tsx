@@ -24,7 +24,7 @@ import LikedPost from "./features/accounts/LikedPost";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 0,
+      staleTime: 60 * 1000,
     },
   },
 });
