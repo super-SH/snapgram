@@ -158,7 +158,7 @@
   }
 
   .user-card {
-    @apply flex-center w-48 flex-col   gap-4 rounded-[20px] border border-dark-4 px-4 py-5 hover:border-primary-600;
+    @apply flex-center w-48 flex-col   gap-4 rounded-[20px] border border-dark-4 bg-dark-2 px-4 py-5 hover:border-primary-600;
   }
 
   /* Post Details */

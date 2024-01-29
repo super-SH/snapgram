@@ -1,14 +1,21 @@
-import { Loader } from "@/components/shared";
 import { useAccounts } from "@/features/accounts/useAccounts";
 import UserCardsContainer from "./UserCardsContainer";
+import { UserCardSkeleton } from "@/components/loaderSkeleton";
 
 function AllAccounts() {
   const { data, isFetching } = useAccounts();
 
   if (isFetching)
-    <div className="flex-center h-full w-full">
-      <Loader />
-    </div>;
+    return (
+      <div className="user-cards-container">
+        <UserCardSkeleton />
+        <UserCardSkeleton />
+        <UserCardSkeleton />
+        <UserCardSkeleton />
+        <UserCardSkeleton />
+        <UserCardSkeleton />
+      </div>
+    );
 
   return <UserCardsContainer accounts={data || []} />;
 }

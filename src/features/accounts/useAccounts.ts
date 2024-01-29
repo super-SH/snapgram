@@ -1,11 +1,9 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getAccounts } from "../../services/apiAccount";
-import { AccountType } from "@/types/collection";
+import { useAccountInfo } from "./useAccountInfo";
 
 export function useAccounts() {
-  const queryClient = useQueryClient();
-
-  const account = queryClient.getQueryData<AccountType>(["account"]);
+  const { data: account } = useAccountInfo();
   const accountId = account?.id;
 
   const { data, error, isFetching } = useQuery({
