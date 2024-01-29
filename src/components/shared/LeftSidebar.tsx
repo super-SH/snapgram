@@ -1,12 +1,10 @@
 import { sidebarLinks } from "@/constants";
 import { INavLink } from "@/types";
 import { Link, NavLink } from "react-router-dom";
-import { useAccountInfo } from "@/features/accounts/useAccountInfo";
 import SignoutButton from "@/features/authentication/SignoutButton";
+import SmallProfileCard from "@/features/accounts/SmallProfileCard";
 
 function LeftSidebar() {
-  const { data } = useAccountInfo();
-
   return (
     <nav className="leftsidebar">
       <div className="flex flex-col gap-10">
@@ -14,22 +12,7 @@ function LeftSidebar() {
           <img src="/assets/images/logo.svg" alt="logo of snapgram" />
         </Link>
 
-        <Link to={`/profile/${data?.id}`} className="flex items-center gap-3">
-          <img
-            className="h-12 w-12 rounded-full object-cover  object-center"
-            src={
-              data?.profileUrl
-                ? data.profileUrl
-                : `/assets/icons/profile-placeholder.svg`
-            }
-            alt="profile"
-          />
-
-          <div className="flex flex-col">
-            <p className="body-bold">{data?.name}</p>
-            <p className="small-regular text-light-3">@{data?.username}</p>
-          </div>
-        </Link>
+        <SmallProfileCard />
 
         <ul className="flex flex-col gap-2 lg:gap-3">
           {sidebarLinks.map((link: INavLink) => (
