@@ -1,9 +1,9 @@
-import { Loader } from "@/components/shared";
 import { useAccountInfoById } from "./useAccountInfoById";
 import { useAccountInfo } from "./useAccountInfo";
 import FollowButton from "../follow/FollowButton";
 import EditProfileButton from "./EditProfileButton";
 import ProfileStats from "./ProfileStats";
+import { AccountDetailSkeleton } from "@/components/loaderSkeleton";
 
 function AccountDetails() {
   const { data, isFetching } = useAccountInfoById();
@@ -11,11 +11,7 @@ function AccountDetails() {
     useAccountInfo();
 
   if (isFetching || isFetchingCurrent || !data)
-    return (
-      <div className="flex-center h-full w-full">
-        <Loader />
-      </div>
-    );
+    return <AccountDetailSkeleton />;
 
   const isCurrentUserProfile = currentlyLoggedAccount?.id === data?.id;
 
