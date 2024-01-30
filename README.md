@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
+# Snapgram
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Connect, Share, Enjoy with Snapgram.**
 
-Currently, two official plugins are available:
+Snapgram is a social media clone that draws inspiration from popular platforms like Instagram and Facebook. With a focus on delivering a seamless user experience, Snapgram is crafted to provide a dynamic and engaging environment for sharing moments and connecting with others.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Notification:** Stay updated with real-time notifications.
+- **Authentication:** User authentication with login and logout functionality.
+- **Post CRUD Operations:** Create, read, update, and delete posts.
+- **Comment CRUD Operations:** Interact with posts through commenting.
+- **Follow:** Connect with friends and follow their updates.
+- **Like Post:** Express your appreciation by liking posts.
+- **Save Post:** Bookmark posts to revisit later.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tech Stack
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **TypeScript:** Adds static typing for enhanced code quality.
+- **React:** A declarative, efficient, and flexible JavaScript library for building user interfaces.
+- **React Router:** Declarative routing for React.js.
+- **React Query:** Fetch, cache, and update data in your React applications.
+- **Supabase:** An open-source alternative to Firebase, offering a realtime database.
+- **Shadcn:** (Please provide more details about this library)
+- **Tailwind CSS:** A utility-first CSS framework.
+- **Vite:** A fast build tool that significantly improves the development experience.
