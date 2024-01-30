@@ -21,6 +21,6 @@ Snapgram is a social media clone that draws inspiration from popular platforms l
 - **React Router:** Declarative routing for React.js. 🛣️
 - **React Query:** Fetch, cache, and update data in your React applications. 🔄
 - **Supabase:** An open-source alternative to Firebase, offering a realtime database. 🚀
-- **Shadcn:** (Please provide more details about this library) 🎨
+- **Shadcn:** Beautifully designed components that you can copy and paste into your apps. 🎨
 - **Tailwind CSS:** A utility-first CSS framework. 🎨
 - **Vite:** A fast build tool ⚡
