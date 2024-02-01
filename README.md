@@ -6,6 +6,7 @@ Snapgram is a social media clone that draws inspiration from popular platforms l
 
 ## Features 🌟
 
+- **Skeleton Loader:** Enhance user experience with a smooth loading transition using skeleton loaders. 💀🦴
 - **Notification:** Stay updated with real-time notifications. 🔔
 - **Authentication:** User authentication with login and logout functionality. 🔐
 - **Post CRUD Operations:** Create, read, update, and delete posts. 📝
