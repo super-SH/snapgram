@@ -31,6 +31,7 @@ export function useInfiniteFollowingPosts() {
       return lastPageParam + 1;
     },
     enabled: !!accountId && followings.length !== 0,
+    refetchOnMount: "always",
   });
 
   return { data, fetchNextPage, hasNextPage, isFetching };

@@ -12,6 +12,8 @@ export function useInfinitePosts() {
 
       return lastPageParam + 1;
     },
+    staleTime: 0,
+    refetchOnMount: true,
   });
 
   return { data, fetchNextPage, hasNextPage };

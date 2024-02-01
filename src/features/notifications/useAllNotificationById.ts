@@ -10,6 +10,8 @@ export function useAllNotificationById() {
     queryKey: ["notifications", accountId],
     queryFn: () => getAllNotificationsById(accountId),
     enabled: !!accountId,
+    staleTime: 0,
+    refetchOnMount: "always",
   });
 
   return { data, isFetching, error };
