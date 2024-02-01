@@ -17,7 +17,8 @@ export async function signup({ username, name, email, password }: INewUser) {
   const { data: account, error } = await supabase
     .from("Accounts")
     .insert([{ email, name, username, accountId }])
-    .select();
+    .select()
+    .single();
 
   if (error) throw new Error(error.message);
 
